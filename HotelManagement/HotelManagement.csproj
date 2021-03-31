@@ -56,6 +56,12 @@
     <Compile Include="views\BookingsController\AddBooking.Designer.cs">
       <DependentUpon>AddBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\BookingsController\EditBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\BookingsController\EditBooking.Designer.cs">
+      <DependentUpon>EditBooking.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\BookingsController\ShowBookings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
   <ItemGroup>
     <EmbeddedResource Include="views\BookingsController\AddBooking.resx">
       <DependentUpon>AddBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\BookingsController\EditBooking.resx">
+      <DependentUpon>EditBooking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\BookingsController\ShowBookings.resx">
       <DependentUpon>ShowBookings.cs</DependentUpon>

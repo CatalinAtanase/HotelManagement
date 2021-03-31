@@ -13,10 +13,14 @@ namespace HotelManagement.views.BookingsController
     public partial class ShowBookings : Form
     {
         public List<Booking> bookings = new List<Booking>();
-        public ShowBookings(List<Booking> bookings)
+        List<User> users = new List<User>();
+        List<Room> rooms = new List<Room>();
+        public ShowBookings(List<Booking> bookings, List<User> users, List<Room> rooms)
         {
             InitializeComponent();
+            this.users = users;
             this.bookings = bookings;
+            this.rooms = rooms;
             displayList();
         }
 
@@ -49,8 +53,8 @@ namespace HotelManagement.views.BookingsController
             {
                 DataGridViewRow selectedRow = dgv_bookings.SelectedRows[0];
                 Booking booking = (Booking)selectedRow.Tag;
-               // Form editRoom = new EditRoom(rooms, room);
-               // editRoom.ShowDialog();
+                Form editBooking = new EditBooking(bookings, users, rooms, booking);
+                editBooking.ShowDialog();
                 displayList();
             }
         }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Cancel_Button = new System.Windows.Forms.Button();
-            this.Btn_Add_User = new System.Windows.Forms.Button();
+            this.Btn_Add_Booking = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.Select_user = new System.Windows.Forms.ComboBox();
@@ -57,18 +57,18 @@
             this.Cancel_Button.UseVisualStyleBackColor = false;
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
-            // Btn_Add_User
+            // Btn_Add_Booking
             // 
-            this.Btn_Add_User.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Btn_Add_User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Add_User.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Add_User.Location = new System.Drawing.Point(312, 488);
-            this.Btn_Add_User.Name = "Btn_Add_User";
-            this.Btn_Add_User.Size = new System.Drawing.Size(121, 35);
-            this.Btn_Add_User.TabIndex = 45;
-            this.Btn_Add_User.Text = "Adauga";
-            this.Btn_Add_User.UseVisualStyleBackColor = true;
-            this.Btn_Add_User.Click += new System.EventHandler(this.Btn_Add_User_Click);
+            this.Btn_Add_Booking.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Btn_Add_Booking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Add_Booking.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Add_Booking.Location = new System.Drawing.Point(312, 488);
+            this.Btn_Add_Booking.Name = "Btn_Add_Booking";
+            this.Btn_Add_Booking.Size = new System.Drawing.Size(121, 35);
+            this.Btn_Add_Booking.TabIndex = 45;
+            this.Btn_Add_Booking.Text = "Adauga";
+            this.Btn_Add_Booking.UseVisualStyleBackColor = true;
+            this.Btn_Add_Booking.Click += new System.EventHandler(this.Btn_Add_Booking_Click);
             // 
             // label1
             // 
@@ -184,7 +184,7 @@
             this.Controls.Add(this.Select_user);
             this.Controls.Add(this.label);
             this.Controls.Add(this.Cancel_Button);
-            this.Controls.Add(this.Btn_Add_User);
+            this.Controls.Add(this.Btn_Add_Booking);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddBooking";
@@ -198,7 +198,7 @@
         #endregion
 
         public System.Windows.Forms.Button Cancel_Button;
-        private System.Windows.Forms.Button Btn_Add_User;
+        private System.Windows.Forms.Button Btn_Add_Booking;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.ComboBox Select_user;

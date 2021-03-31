@@ -107,7 +107,7 @@ namespace HotelManagement.views
 
         private void btn_show_bookings_Click(object sender, EventArgs e)
         {
-            openChildForm(new ShowBookings(bookings));
+            openChildForm(new ShowBookings(bookings, users, rooms));
         }
 
         private void btn_add_booking_Click(object sender, EventArgs e)
