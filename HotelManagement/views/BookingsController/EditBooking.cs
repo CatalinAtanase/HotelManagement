@@ -74,25 +74,25 @@ namespace HotelManagement.views.BookingsController
                 MessageBox.Show("Nu ati selectat clientul!\n");
             }
 
-            if (DateTime.Compare(startDate, DateTime.Now) < -1)
+            else if (DateTime.Compare(startDate, DateTime.Now) < -1)
             {
                 isValid = false;
                 MessageBox.Show("Data de checkin nu poate fi mai mica decat data de astazi!\n");
             }
 
-            if (DateTime.Compare(startDate, endDate) > 0)
+            else if (DateTime.Compare(startDate, endDate) > 0)
             {
                 isValid = false;
-                MessageBox.Show("Data de checkout trebuie sa fie mai mare decat data de checkout!\n");
+                MessageBox.Show("Data de checkout trebuie sa fie mai mare decat data de checkin!\n");
             }
 
-            if (roomIndex == -1)
+            else if (roomIndex == -1)
             {
                 isValid = false;
                 MessageBox.Show("Nu ati selectat camera!\n");
             }
 
-            if (bookings.FindAll((b) => b.Room.Id.ToString() == this.select_camera.Text && b.Room.Id != booking.Room.Id).Any(b => DateTime.Compare(b.EndDate, startDate) > 0))
+            else if (bookings.FindAll((b) => b.Room.Id.ToString() == this.select_camera.Text && b.Room.Id != booking.Room.Id).Any(b => DateTime.Compare(b.EndDate, startDate) > 0))
             {
                 isValid = false;
                 MessageBox.Show("Camera este deja rezervata in acea perioada!\n");
@@ -100,21 +100,28 @@ namespace HotelManagement.views.BookingsController
 
             if (isValid)
             {
-                Item selected = this.Select_user.SelectedItem as Item;
-                User user = users.Find((u) => u.Cnp == selected.cnp);
-                Room room = rooms.Find((r) => r.Id.ToString() == this.select_camera.SelectedItem.ToString());
+                try
+                {
+                    Item selected = this.Select_user.SelectedItem as Item;
+                    User user = users.Find((u) => u.Cnp == selected.cnp);
+                    Room room = rooms.Find((r) => r.Id.ToString() == this.select_camera.SelectedItem.ToString());
 
-                Console.WriteLine(user);
-                Console.WriteLine(room);
-                Console.WriteLine(startDate);
-                Console.WriteLine(endDate);
+                    Console.WriteLine(user);
+                    Console.WriteLine(room);
+                    Console.WriteLine(startDate);
+                    Console.WriteLine(endDate);
 
-                booking.User = user;
-                booking.Room = room;
-                booking.StartDate = startDate;
-                booking.EndDate = endDate;
+                    booking.User = user;
+                    booking.Room = room;
+                    booking.StartDate = startDate;
+                    booking.EndDate = endDate;
 
-                MessageBox.Show("Rezervare editata cu succes!");
+                    MessageBox.Show("Rezervare editata cu succes!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

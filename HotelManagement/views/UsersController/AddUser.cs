@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,53 +28,64 @@ namespace HotelManagement.views.UsersController
             string cnp = this.tb_cnp.Text.Trim();
             string email = this.tb_email.Text.Trim();
             bool isValid = true;
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
 
-            if(String.IsNullOrEmpty(lastName))
+            if (String.IsNullOrEmpty(lastName))
             {
                 isValid = false;
-                MessageBox.Show("Nu ati completat corect campul de nume!");
+                errorProvider1.SetError(tb_nume, "Nu ati completat corect campul de nume!");
             }
 
-            if (String.IsNullOrEmpty(firstName))
+            else if (String.IsNullOrEmpty(firstName))
             {
                 isValid = false;
-                MessageBox.Show("Nu ati completat corect campul de prenume!");
+                errorProvider1.SetError(tb_prenume, "Nu ati completat corect campul de prenume!");
             }
 
-            if (String.IsNullOrEmpty(cnp) || cnp.Length != 13)
+            else if (String.IsNullOrEmpty(cnp) || cnp.Length != 13)
             {
                 isValid = false;
-                MessageBox.Show("Nu ati completat corect campul de CNP!");
+                errorProvider1.SetError(tb_cnp, "Nu ati completat corect campul de CNP!");
             }
 
-            if(users.Any(u => u.Cnp == cnp))
+            else if(users.Any(u => u.Cnp == cnp))
             {
                 isValid = false;
                 MessageBox.Show("Exista un client cu acest cnp!");
             }
 
-            if (String.IsNullOrEmpty(email) || !email.Contains("@"))
+            else if (String.IsNullOrEmpty(email) || !match.Success)
             {
                 isValid = false;
-                MessageBox.Show("Nu ati completat corect campul de email!");
+                errorProvider1.SetError(tb_email, "Nu ati completat corect campul de email!");
             }
-
-            if (String.IsNullOrEmpty(phone))
+            
+            else if (String.IsNullOrEmpty(phone))
             {
                 isValid = false;
-                MessageBox.Show("Nu ati completat corect campul de telefon!");
+                errorProvider1.SetError(tb_telefon, "Nu ati completat corect campul de telefon!");
             }
 
             if (isValid)
             {
-                users.Add(new User(firstName, lastName, cnp, email, phone));
-                this.tb_nume.Clear();
-                this.tb_prenume.Clear();
-                this.tb_email.Clear();
-                this.tb_cnp.Clear();
-                this.tb_telefon.Clear();
+                try
+                {
+                    users.Add(new User(firstName, lastName, cnp, email, phone));
+                    this.tb_nume.Clear();
+                    this.tb_prenume.Clear();
+                    this.tb_email.Clear();
+                    this.tb_cnp.Clear();
+                    this.tb_telefon.Clear();
 
-                MessageBox.Show("Client adaugat cu succes!");
+                    MessageBox.Show("Client adaugat cu succes!");
+                } catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                } finally
+                {
+                    errorProvider1.Clear();
+                }
             }
         }
 

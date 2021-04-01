@@ -19,20 +19,6 @@ namespace HotelManagement.views.RoomsController
             rooms = r;
         }
 
-        private void tb_numar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void Btn_Add_Room_Click(object sender, EventArgs e)
         {
             int number = -1;
@@ -40,49 +26,71 @@ namespace HotelManagement.views.RoomsController
             int capacitate = -1;
             bool isValid = true;
 
+
             if (!Int32.TryParse(this.tb_numar.Text, out number))
             {
                 isValid = false;
-                MessageBox.Show("Numar invalid!");
+                errorProvider1.SetError(tb_numar, "Numar invalid");
             }
 
-            if (rooms.Any(r => r.Id == number))
+            else if (rooms.Any(r => r.Id == number))
             {
                 isValid = false;
-                MessageBox.Show("Exista o camera cu acest numar!");
+                errorProvider1.SetError(tb_numar, "Exista o camera cu acest numar!");
+
             }
 
-            if (!Double.TryParse(this.tb_pret.Text, out price))
+            else if (!Double.TryParse(this.tb_pret.Text, out price))
             {
                 isValid = false;
-                MessageBox.Show("Pret invalid!");
+                errorProvider1.SetError(tb_pret, "Pret invalid!");
+
             }
 
-            if (!Int32.TryParse(this.Select_capacitate.Text, out capacitate))
+            else if (!Int32.TryParse(this.Select_capacitate.Text, out capacitate))
             {
                 isValid = false;
-                MessageBox.Show("Capacitate invalida!");
+                errorProvider1.SetError(Select_capacitate, "Capacitate invalida!");
+
             }
 
-            if (capacitate > 3)
+            else if (capacitate > 3)
             {
                 isValid = false;
-                MessageBox.Show("Capacitate invalida!");
+                errorProvider1.SetError(Select_capacitate, "Capacitate invalida!");
             }
 
             if (isValid)
             {
-                rooms.Add(new Room(number, Int32.Parse(this.Select_capacitate.Text), price, this.CB_camera_premium.Checked, false));
-                foreach (Room room in rooms)
+                try
                 {
-                    Console.WriteLine(room);
+                    rooms.Add(new Room(number, Int32.Parse(this.Select_capacitate.Text), price, this.CB_camera_premium.Checked, false));
+                    foreach (Room room in rooms)
+                    {
+                        Console.WriteLine(room);
+                    }
+
+                    tb_numar.Clear();
+                    tb_pret.Clear();
+                    Select_capacitate.SelectedIndex = -1;
+                    CB_camera_premium.Checked = false;
+                    MessageBox.Show("Camera adaugata cu succes!");
+
                 }
-                tb_numar.Clear();
-                tb_pret.Clear();
-                Select_capacitate.SelectedIndex = -1;
-                CB_camera_premium.Checked = false;
-                MessageBox.Show("Camera adaugata cu succes!");
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    errorProvider1.Clear();
+                }
             }
+        }
+
+        private void numberKeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(e.KeyChar >= '0' && e.KeyChar <= '9' || e.KeyChar == (char)8 || e.KeyChar == '.');
         }
 
         private void Cancel_Button_Click(object sender, EventArgs e)

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace HotelManagement
 {
+
+    [Serializable]
     public class User
     {
         private string firstName;
@@ -13,6 +15,7 @@ namespace HotelManagement
         private string cnp;
         private string email;
         private string phone;
+        //Booking[] bookings;
 
         public User(string firstName, string lastName, string cnp, string email, string phone)
         {

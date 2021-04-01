@@ -30,17 +30,17 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_subMenu_clienti_btns = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btn_saveUsers = new System.Windows.Forms.Button();
             this.btn_show_clients = new System.Windows.Forms.Button();
             this.btn_add_client = new System.Windows.Forms.Button();
             this.btn_user_dropdown = new System.Windows.Forms.Button();
             this.panel_subMenu_rezervari_btns = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_saveBookings = new System.Windows.Forms.Button();
             this.btn_show_bookings = new System.Windows.Forms.Button();
             this.btn_add_booking = new System.Windows.Forms.Button();
             this.btn_bookings_dropdown = new System.Windows.Forms.Button();
             this.panel_subMenu_camere_btns = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_save_rooms = new System.Windows.Forms.Button();
             this.btn_show_camere = new System.Windows.Forms.Button();
             this.btn_add_camere = new System.Windows.Forms.Button();
             this.btn_camere_dropdown = new System.Windows.Forms.Button();
@@ -70,33 +70,34 @@
             // panel_subMenu_clienti_btns
             // 
             this.panel_subMenu_clienti_btns.BackColor = System.Drawing.Color.Lime;
-            this.panel_subMenu_clienti_btns.Controls.Add(this.button9);
+            this.panel_subMenu_clienti_btns.Controls.Add(this.btn_saveUsers);
             this.panel_subMenu_clienti_btns.Controls.Add(this.btn_show_clients);
             this.panel_subMenu_clienti_btns.Controls.Add(this.btn_add_client);
             this.panel_subMenu_clienti_btns.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_subMenu_clienti_btns.Location = new System.Drawing.Point(0, 546);
+            this.panel_subMenu_clienti_btns.Location = new System.Drawing.Point(0, 541);
             this.panel_subMenu_clienti_btns.Name = "panel_subMenu_clienti_btns";
             this.panel_subMenu_clienti_btns.Size = new System.Drawing.Size(235, 109);
             this.panel_subMenu_clienti_btns.TabIndex = 8;
             this.panel_subMenu_clienti_btns.Visible = false;
             // 
-            // button9
+            // btn_saveUsers
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.Black;
-            this.button9.Location = new System.Drawing.Point(0, 60);
-            this.button9.Name = "button9";
-            this.button9.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button9.Size = new System.Drawing.Size(235, 30);
-            this.button9.TabIndex = 6;
-            this.button9.Text = "button9";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.UseVisualStyleBackColor = false;
+            this.btn_saveUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btn_saveUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_saveUsers.FlatAppearance.BorderSize = 0;
+            this.btn_saveUsers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btn_saveUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_saveUsers.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_saveUsers.ForeColor = System.Drawing.Color.Black;
+            this.btn_saveUsers.Location = new System.Drawing.Point(0, 60);
+            this.btn_saveUsers.Name = "btn_saveUsers";
+            this.btn_saveUsers.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btn_saveUsers.Size = new System.Drawing.Size(235, 30);
+            this.btn_saveUsers.TabIndex = 6;
+            this.btn_saveUsers.Text = "Salveaza clienti";
+            this.btn_saveUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_saveUsers.UseVisualStyleBackColor = false;
+            this.btn_saveUsers.Click += new System.EventHandler(this.btn_saveUsers_Click);
             // 
             // btn_show_clients
             // 
@@ -145,7 +146,7 @@
             this.btn_user_dropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_user_dropdown.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_user_dropdown.ForeColor = System.Drawing.Color.Black;
-            this.btn_user_dropdown.Location = new System.Drawing.Point(0, 488);
+            this.btn_user_dropdown.Location = new System.Drawing.Point(0, 483);
             this.btn_user_dropdown.Name = "btn_user_dropdown";
             this.btn_user_dropdown.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_user_dropdown.Size = new System.Drawing.Size(235, 58);
@@ -158,33 +159,33 @@
             // panel_subMenu_rezervari_btns
             // 
             this.panel_subMenu_rezervari_btns.BackColor = System.Drawing.Color.Lime;
-            this.panel_subMenu_rezervari_btns.Controls.Add(this.button5);
+            this.panel_subMenu_rezervari_btns.Controls.Add(this.btn_saveBookings);
             this.panel_subMenu_rezervari_btns.Controls.Add(this.btn_show_bookings);
             this.panel_subMenu_rezervari_btns.Controls.Add(this.btn_add_booking);
             this.panel_subMenu_rezervari_btns.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_subMenu_rezervari_btns.Location = new System.Drawing.Point(0, 379);
+            this.panel_subMenu_rezervari_btns.Location = new System.Drawing.Point(0, 374);
             this.panel_subMenu_rezervari_btns.Name = "panel_subMenu_rezervari_btns";
             this.panel_subMenu_rezervari_btns.Size = new System.Drawing.Size(235, 109);
             this.panel_subMenu_rezervari_btns.TabIndex = 6;
             this.panel_subMenu_rezervari_btns.Visible = false;
             // 
-            // button5
+            // btn_saveBookings
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(0, 60);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(235, 30);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "button5";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn_saveBookings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btn_saveBookings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_saveBookings.FlatAppearance.BorderSize = 0;
+            this.btn_saveBookings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btn_saveBookings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_saveBookings.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_saveBookings.ForeColor = System.Drawing.Color.Black;
+            this.btn_saveBookings.Location = new System.Drawing.Point(0, 60);
+            this.btn_saveBookings.Name = "btn_saveBookings";
+            this.btn_saveBookings.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btn_saveBookings.Size = new System.Drawing.Size(235, 30);
+            this.btn_saveBookings.TabIndex = 6;
+            this.btn_saveBookings.Text = "Salveaza rezervari";
+            this.btn_saveBookings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_saveBookings.UseVisualStyleBackColor = false;
             // 
             // btn_show_bookings
             // 
@@ -233,7 +234,7 @@
             this.btn_bookings_dropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_bookings_dropdown.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_bookings_dropdown.ForeColor = System.Drawing.Color.Black;
-            this.btn_bookings_dropdown.Location = new System.Drawing.Point(0, 321);
+            this.btn_bookings_dropdown.Location = new System.Drawing.Point(0, 316);
             this.btn_bookings_dropdown.Name = "btn_bookings_dropdown";
             this.btn_bookings_dropdown.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_bookings_dropdown.Size = new System.Drawing.Size(235, 58);
@@ -246,33 +247,34 @@
             // panel_subMenu_camere_btns
             // 
             this.panel_subMenu_camere_btns.BackColor = System.Drawing.Color.Lime;
-            this.panel_subMenu_camere_btns.Controls.Add(this.button4);
+            this.panel_subMenu_camere_btns.Controls.Add(this.btn_save_rooms);
             this.panel_subMenu_camere_btns.Controls.Add(this.btn_show_camere);
             this.panel_subMenu_camere_btns.Controls.Add(this.btn_add_camere);
             this.panel_subMenu_camere_btns.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_subMenu_camere_btns.Location = new System.Drawing.Point(0, 216);
             this.panel_subMenu_camere_btns.Name = "panel_subMenu_camere_btns";
-            this.panel_subMenu_camere_btns.Size = new System.Drawing.Size(235, 105);
+            this.panel_subMenu_camere_btns.Size = new System.Drawing.Size(235, 100);
             this.panel_subMenu_camere_btns.TabIndex = 4;
             this.panel_subMenu_camere_btns.Visible = false;
             // 
-            // button4
+            // btn_save_rooms
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(0, 60);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(235, 30);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "button4";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_save_rooms.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btn_save_rooms.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_save_rooms.FlatAppearance.BorderSize = 0;
+            this.btn_save_rooms.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btn_save_rooms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_save_rooms.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_save_rooms.ForeColor = System.Drawing.Color.Black;
+            this.btn_save_rooms.Location = new System.Drawing.Point(0, 60);
+            this.btn_save_rooms.Name = "btn_save_rooms";
+            this.btn_save_rooms.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btn_save_rooms.Size = new System.Drawing.Size(235, 30);
+            this.btn_save_rooms.TabIndex = 6;
+            this.btn_save_rooms.Text = "Salveaza camere";
+            this.btn_save_rooms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_save_rooms.UseVisualStyleBackColor = false;
+            this.btn_save_rooms.Click += new System.EventHandler(this.btn_save_rooms_Click);
             // 
             // btn_show_camere
             // 
@@ -375,17 +377,17 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel_subMenu_clienti_btns;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btn_saveUsers;
         private System.Windows.Forms.Button btn_show_clients;
         private System.Windows.Forms.Button btn_add_client;
         private System.Windows.Forms.Button btn_user_dropdown;
         private System.Windows.Forms.Panel panel_subMenu_rezervari_btns;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_saveBookings;
         private System.Windows.Forms.Button btn_show_bookings;
         private System.Windows.Forms.Button btn_add_booking;
         private System.Windows.Forms.Button btn_bookings_dropdown;
         private System.Windows.Forms.Panel panel_subMenu_camere_btns;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_save_rooms;
         private System.Windows.Forms.Button btn_show_camere;
         private System.Windows.Forms.Button btn_add_camere;
         private System.Windows.Forms.Button btn_camere_dropdown;

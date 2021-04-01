@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,12 +21,24 @@ namespace HotelManagement.views
         private List<Room> rooms = new List<Room>();
         private List<User> users = new List<User>();
         List<Booking> bookings = new List<Booking>();
+        private const string roomsPath = "rooms.bin";
+        private const string usersPath = "users.bin";
         public Dashboard(List<Room> r, List<User> users, List<Booking> bookings)
         {
             InitializeComponent();
             this.rooms = r;
             this.users = users;
             this.bookings = bookings;
+            try
+            {
+                this.users = (List<User>)Deserialize(usersPath);
+                this.rooms = (List<Room>)Deserialize(roomsPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void hideSubMenu()
@@ -113,6 +127,73 @@ namespace HotelManagement.views
         private void btn_add_booking_Click(object sender, EventArgs e)
         {
             openChildForm(new AddBooking(bookings, users, rooms));
+        }
+
+        public static void Serialize(object value, string path)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                formatter.Serialize(fStream, value);
+                Console.WriteLine("msj");
+            }
+        }
+
+        public static object Deserialize(string path)
+        {
+            if (!System.IO.File.Exists(path)) { throw new NotImplementedException(); }
+
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (Stream fStream = File.OpenRead(path))
+            {
+                return formatter.Deserialize(fStream);
+            }
+        }
+
+        private void btn_save_rooms_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Salvare camere?", "Salveaza camere", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Serialize(rooms, roomsPath);
+                    MessageBox.Show("Camere salvate in fisierul " + roomsPath + "!");
+                }
+
+                if (activeForm != null)
+                {
+                    activeForm.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_saveUsers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Salvare clienti?", "Salveaza clienti", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Serialize(users, usersPath);
+                    MessageBox.Show("Clienti salvati in fisierul " + usersPath + "!");
+                }
+                if (activeForm != null)
+                {
+                    activeForm.Dispose();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

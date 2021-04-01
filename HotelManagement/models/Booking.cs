@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HotelManagement
 {
-    public class Booking
+    [Serializable]
+    public class Booking: IComparable<Booking>, ICloneable
     {
         User user;
         Room room;
@@ -30,6 +31,25 @@ namespace HotelManagement
 
         public Room Room { get => room; set => room = value; }
         internal User User { get => user; set => user = value; }
+
+        public int CompareTo(Booking obj)
+        {
+            return startDate.CompareTo(obj.startDate);
+        }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public double getValoareTotala()
+        {
+            return getNumberOfDays() * room.Price;
+        }
+
+        public int getNumberOfDays()
+        {
+            return (int)(endDate - startDate).TotalDays;
+        }
 
         public override string ToString()
         {

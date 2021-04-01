@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tb_numar = new System.Windows.Forms.TextBox();
@@ -38,6 +39,8 @@
             this.CB_camera_premium = new System.Windows.Forms.CheckBox();
             this.Btn_Add_Room = new System.Windows.Forms.Button();
             this.Cancel_Button = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +70,7 @@
             this.tb_numar.Name = "tb_numar";
             this.tb_numar.Size = new System.Drawing.Size(261, 30);
             this.tb_numar.TabIndex = 1;
-            this.tb_numar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_numar_KeyPress);
+            this.tb_numar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberKeyPress);
             // 
             // label2
             // 
@@ -86,7 +89,7 @@
             this.tb_pret.Name = "tb_pret";
             this.tb_pret.Size = new System.Drawing.Size(261, 30);
             this.tb_pret.TabIndex = 2;
-            this.tb_pret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_numar_KeyPress);
+            this.tb_pret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberKeyPress);
             // 
             // label7
             // 
@@ -110,6 +113,7 @@
             this.Select_capacitate.Name = "Select_capacitate";
             this.Select_capacitate.Size = new System.Drawing.Size(261, 33);
             this.Select_capacitate.TabIndex = 3;
+            this.Select_capacitate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberKeyPress);
             // 
             // CB_camera_premium
             // 
@@ -150,6 +154,10 @@
             this.Cancel_Button.UseVisualStyleBackColor = false;
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // AddRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -169,6 +177,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddRoom";
             this.Text = "AddRoom";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +195,6 @@
         private System.Windows.Forms.CheckBox CB_camera_premium;
         private System.Windows.Forms.Button Btn_Add_Room;
         public System.Windows.Forms.Button Cancel_Button;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

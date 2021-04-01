@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.Btn_Add_User = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.tb_email = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tb_cnp = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // Cancel_Button
@@ -171,6 +174,10 @@
             this.tb_cnp.Size = new System.Drawing.Size(261, 30);
             this.tb_cnp.TabIndex = 3;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -194,6 +201,7 @@
             this.Name = "AddUser";
             this.Tag = "";
             this.Text = "AddUser";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,5 +222,6 @@
         private System.Windows.Forms.TextBox tb_email;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tb_cnp;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

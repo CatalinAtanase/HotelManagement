@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement
 {
-    public class Room
+    [Serializable] public class Room : ICloneable, IComparable<Room>
     {
         private int id;
         private int capacity;
@@ -52,6 +52,14 @@ namespace HotelManagement
             this.IsBooked = isBooked;
         }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
 
+        public int CompareTo(Room room)
+        {
+            return price.CompareTo(room.price);
+        }
     }
 }

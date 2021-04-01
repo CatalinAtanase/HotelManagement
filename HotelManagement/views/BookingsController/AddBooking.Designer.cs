@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.Btn_Add_Booking = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +41,8 @@
             this.select_checkOut = new System.Windows.Forms.DateTimePicker();
             this.select_camera = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // Cancel_Button
@@ -168,6 +171,10 @@
             this.label4.TabIndex = 55;
             this.label4.Text = "Camera";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // AddBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -190,6 +197,7 @@
             this.Name = "AddBooking";
             this.Text = "AddBooking";
             this.Load += new System.EventHandler(this.AddBooking_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +217,6 @@
         private System.Windows.Forms.DateTimePicker select_checkOut;
         private System.Windows.Forms.ComboBox select_camera;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

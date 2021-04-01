@@ -68,25 +68,32 @@ namespace HotelManagement.views.RoomsController
 
             if (isValid)
             {
-                room.Id = number;
-                room.Price = price;
-                room.Capacity = capacitate;
-                room.IsPremium = this.CB_camera_premium.Checked;
+                try
+                {
 
-                MessageBox.Show("Camera editata cu succes!");
-                this.Dispose();
+                    room.Id = number;
+                    room.Price = price;
+                    room.Capacity = capacitate;
+                    room.IsPremium = this.CB_camera_premium.Checked;
+
+                    MessageBox.Show("Camera editata cu succes!");
+                    this.Dispose();
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
-        
+
 
         private void Cancel_Button_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void numberKeyPress(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = !(e.KeyChar >= '0' && e.KeyChar <= '9' || e.KeyChar == (char)8 || e.KeyChar == '.');
         }
     }
 }

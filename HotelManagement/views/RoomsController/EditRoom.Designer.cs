@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.Btn_FinishEdit_Room = new System.Windows.Forms.Button();
             this.CB_camera_premium = new System.Windows.Forms.CheckBox();
@@ -39,6 +40,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.err_label = new System.Windows.Forms.Label();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // Cancel_Button
@@ -92,6 +95,7 @@
             this.Select_capacitate.Name = "Select_capacitate";
             this.Select_capacitate.Size = new System.Drawing.Size(261, 33);
             this.Select_capacitate.TabIndex = 33;
+            this.Select_capacitate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberKeyPress);
             // 
             // label7
             // 
@@ -110,6 +114,7 @@
             this.tb_pret.Name = "tb_pret";
             this.tb_pret.Size = new System.Drawing.Size(261, 30);
             this.tb_pret.TabIndex = 31;
+            this.tb_pret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberKeyPress);
             // 
             // label2
             // 
@@ -128,6 +133,7 @@
             this.tb_numar.Name = "tb_numar";
             this.tb_numar.Size = new System.Drawing.Size(261, 30);
             this.tb_numar.TabIndex = 29;
+            this.tb_numar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberKeyPress);
             // 
             // label6
             // 
@@ -158,7 +164,10 @@
             this.err_label.Name = "err_label";
             this.err_label.Size = new System.Drawing.Size(0, 19);
             this.err_label.TabIndex = 37;
-            this.err_label.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
             // 
             // EditRoom
             // 
@@ -180,6 +189,7 @@
             this.Name = "EditRoom";
             this.Text = "EditRoom";
             this.Load += new System.EventHandler(this.EditRoom_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +208,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label err_label;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }
