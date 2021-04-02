@@ -13,10 +13,19 @@ namespace HotelManagement.views.UsersController
     public partial class ShowUsers : Form
     {
         List<User> users;
-        public ShowUsers(List<User> users)
+        Func<object, string, bool> save;
+        string savePath;
+        string bookingsPath;
+        List<Booking> bookings;
+
+        public ShowUsers(List<User> users, Func<object, string, bool> save, string savePath, List<Booking> bookings, string bookingsPath)
         {
             InitializeComponent();
             this.users = users;
+            this.save = save;
+            this.savePath = savePath;
+            this.bookings = bookings;
+            this.bookingsPath = bookingsPath;
             displayList();
         }
 
@@ -37,8 +46,27 @@ namespace HotelManagement.views.UsersController
             {
                 DataGridViewRow selectedRow = dgv_users.SelectedRows[0];
                 User user= (User)selectedRow.Tag;
-                users.Remove(user);
-                MessageBox.Show("Client sters cu succes!");
+
+                bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
+                bool saved = save(bookings, bookingsPath);
+                if (!saved)
+                {
+                    MessageBox.Show("A aparut o problema la salvare!");
+                }
+                else
+                {
+                    users.Remove(user);
+                    saved = save(users, savePath);
+                    if (saved)
+                    {
+                        MessageBox.Show("Client sters cu succes! Rezervarile acestuia au fost sterse!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("A aparut o problema la salvare!");
+                    }
+                }
+
                 displayList();
             }
         }
@@ -49,7 +77,7 @@ namespace HotelManagement.views.UsersController
             {
                 DataGridViewRow selectedRow = dgv_users.SelectedRows[0];
                 User user = (User)selectedRow.Tag;
-                Form editUser = new EditUser(users, user);
+                Form editUser = new EditUser(users, user, save, savePath, bookings, bookingsPath);
                 editUser.ShowDialog();
                 displayList();
             }

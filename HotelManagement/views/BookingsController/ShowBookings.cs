@@ -15,12 +15,20 @@ namespace HotelManagement.views.BookingsController
         public List<Booking> bookings = new List<Booking>();
         List<User> users = new List<User>();
         List<Room> rooms = new List<Room>();
-        public ShowBookings(List<Booking> bookings, List<User> users, List<Room> rooms)
+        Func<object, string, bool> save;
+        string bookingsPath;
+        string roomsPath;
+        
+
+        public ShowBookings(List<Booking> bookings, List<User> users, List<Room> rooms, Func<object, string, bool> save, string bookingsPath, string roomsPath)
         {
             InitializeComponent();
             this.users = users;
             this.bookings = bookings;
             this.rooms = rooms;
+            this.save = save;
+            this.bookingsPath = bookingsPath;
+            this.roomsPath = roomsPath;
             displayList();
         }
 
@@ -30,8 +38,16 @@ namespace HotelManagement.views.BookingsController
             bookings.Sort((a, b) => DateTime.Compare(a.StartDate, b.StartDate));
             foreach(Booking b in bookings)
             {
-                int index = this.dgv_bookings.Rows.Add(b.User.getFullName(), b.StartDate.ToShortDateString(), b.EndDate.ToShortDateString(), b.Room.Id);
-                this.dgv_bookings.Rows[index].Tag = b;
+                try
+                {
+                    User rowUser = users.Find((u) => u.Cnp == b.UserCNP);
+                    int index = this.dgv_bookings.Rows.Add(rowUser.getFullName(), b.StartDate.ToShortDateString(), b.EndDate.ToShortDateString(), b.RoomId);
+                    this.dgv_bookings.Rows[index].Tag = b;
+                } catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+               
             }
         }
 
@@ -39,10 +55,23 @@ namespace HotelManagement.views.BookingsController
         {
             if (dgv_bookings.SelectedRows.Count == 1)
             {
+                bool saved = true;
                 DataGridViewRow selectedRow = dgv_bookings.SelectedRows[0];
                 Booking booking = (Booking)selectedRow.Tag;
+
+                rooms.Find((r) => r.Id == booking.RoomId).IsBooked = false;
+                saved = save(rooms, roomsPath);
+
                 bookings.Remove(booking);
-                MessageBox.Show("Rezervare stearsa cu succes!");
+                saved = save(bookings, bookingsPath);
+                if (saved)
+                {
+                    MessageBox.Show("Rezervare stearsa cu succes!");
+                }
+                else
+                {
+                    MessageBox.Show("A aparut o eroare!");
+                }
                 displayList();
             }
         }
@@ -53,7 +82,7 @@ namespace HotelManagement.views.BookingsController
             {
                 DataGridViewRow selectedRow = dgv_bookings.SelectedRows[0];
                 Booking booking = (Booking)selectedRow.Tag;
-                Form editBooking = new EditBooking(bookings, users, rooms, booking);
+                Form editBooking = new EditBooking(bookings, users, rooms, booking, save, bookingsPath, roomsPath);
                 editBooking.ShowDialog();
                 displayList();
             }

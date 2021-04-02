@@ -16,12 +16,20 @@ namespace HotelManagement.views.BookingsController
         List<Booking> bookings = new List<Booking>();
         List<User> users = new List<User>();
         List<Room> rooms = new List<Room>();
-        public AddBooking(List<Booking> bookings, List<User> users, List<Room> rooms)
+        Func<object, string, bool> save;
+        string usersPath;
+        string bookingsPath;
+        string roomsPath;
+        public AddBooking(List<Booking> bookings, List<User> users, List<Room> rooms, Func<object, string, bool> save, string usersPath, string bookingsPath, string roomsPath)
         {
             InitializeComponent();
             this.users = users;
             this.bookings = bookings;
             this.rooms = rooms;
+            this.save = save;
+            this.usersPath = usersPath;
+            this.bookingsPath = bookingsPath;
+            this.roomsPath = roomsPath;
             loadUserSelect();
             loadRoomSelect();
         }
@@ -49,7 +57,7 @@ namespace HotelManagement.views.BookingsController
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form addUser = new AddUser(users);
+            Form addUser = new AddUser(users, save, usersPath);
             addUser.FormBorderStyle = FormBorderStyle.FixedDialog;
             addUser.ShowDialog();
             loadUserSelect();
@@ -63,8 +71,8 @@ namespace HotelManagement.views.BookingsController
         private void Btn_Add_Booking_Click(object sender, EventArgs e)
         {
             int userIndex = this.Select_user.SelectedIndex;
-            DateTime startDate = this.select_checkIn.Value;
-            DateTime endDate = this.select_checkOut.Value;
+            DateTime startDate = this.select_checkIn.Value.Date;
+            DateTime endDate = this.select_checkOut.Value.Date;
             int roomIndex = this.select_camera.SelectedIndex;
             bool isValid = true;
 
@@ -74,16 +82,16 @@ namespace HotelManagement.views.BookingsController
                 errorProvider1.SetError(Select_user, "Nu ati selectat clientul!");
             }
 
-            else if(DateTime.Compare(startDate, DateTime.Now) < -1)
+            else if((startDate - DateTime.Now.Date).Days < 0)
             {
                 isValid = false;
                 errorProvider1.SetError(select_checkIn, "Data de checkin nu poate fi mai mica decat data de astazi!");
             }
 
-            else if (DateTime.Compare(startDate, endDate) > 0)
+            else if ((startDate - endDate).Days >= 0)
             {
                 isValid = false;
-                errorProvider1.SetError(select_checkOut, "Data de checkin nu poate fi mai mica decat data de astazi!");
+                errorProvider1.SetError(select_checkOut, "Data de checkout trebuie sa fie mai mare decat data de check in!");
             }
 
             else if (roomIndex == -1)
@@ -92,7 +100,7 @@ namespace HotelManagement.views.BookingsController
                 errorProvider1.SetError(select_camera, "Nu ati selectat camera!");
             }
 
-            else if(bookings.FindAll((b) => b.Room.Id.ToString() == this.select_camera.Text).Any(b => DateTime.Compare(b.EndDate, startDate) > 0))
+            else if(bookings.FindAll((b) => b.RoomId.ToString() == this.select_camera.Text).Any(b => (b.EndDate - startDate).Days > 0))
             {
                 isValid = false;
                 MessageBox.Show("Camera este deja rezervata in acea perioada!\n");
@@ -102,21 +110,44 @@ namespace HotelManagement.views.BookingsController
             {
                 try
                 {
-
+                    bool saved = true;
                     Item selected = this.Select_user.SelectedItem as Item;
                     User user = users.Find((u) => u.Cnp == selected.cnp);
                     Room room = rooms.Find((r) => r.Id.ToString() == this.select_camera.SelectedItem.ToString());
 
-                    bookings.Add(new Booking(user, room, startDate, endDate));
-                    MessageBox.Show("Rezervare adaugata cu succes!");
-                    
-                } catch(Exception ex)
+
+                    if ((startDate - DateTime.Now).Hours <= 0)
+                    {
+                        room.IsBooked = true;
+                        saved = save(rooms, roomsPath);
+                    }
+
+                    Booking newBooking = new Booking(user.Cnp, room.Id, startDate, endDate);
+                    bookings.Add(newBooking);
+
+                    if (saved)
+                    {
+                        saved = save(bookings, bookingsPath);
+                        if (saved)
+                        {
+                            MessageBox.Show("Rezervare adaugata cu succes!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("A aparut o eroare!");
+                        }
+                    }
+
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                } finally
+                }
+                finally
                 {
                     this.select_camera.SelectedIndex = -1;
                     this.Select_user.SelectedIndex = -1;
+                    errorProvider1.Clear();
                 }
             }
 

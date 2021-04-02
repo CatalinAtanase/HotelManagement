@@ -14,10 +14,18 @@ namespace HotelManagement.views.RoomsController
     {
         public List<Room> rooms;
         public Room room;
-        public EditRoom(List<Room> rooms, Room room)
+        Func<object, string, bool> save;
+        string roomsPath;
+        List<Booking> bookings;
+        string bookingsPath;
+        public EditRoom(List<Room> rooms, Room room, Func<object, string, bool> save, string roomsPath, List<Booking> bookings, string bookingsPath)
         {
             this.room = room;
             this.rooms = rooms;
+            this.save = save;
+            this.roomsPath = roomsPath;
+            this.bookings = bookings;
+            this.bookingsPath = bookingsPath;
             InitializeComponent();
         }
 
@@ -71,12 +79,39 @@ namespace HotelManagement.views.RoomsController
                 try
                 {
 
+                    List<Booking> tempBookings;
+                    tempBookings = bookings.FindAll((b) => b.RoomId == room.Id);
+
                     room.Id = number;
                     room.Price = price;
                     room.Capacity = capacitate;
                     room.IsPremium = this.CB_camera_premium.Checked;
 
-                    MessageBox.Show("Camera editata cu succes!");
+                    bool saved = save(rooms, roomsPath);
+                    if (saved)
+                    {
+                        foreach(Booking booking in bookings)
+                        {
+                            if(tempBookings.Contains(booking))
+                            {
+                                booking.RoomId = room.Id;
+                            }
+                        }
+
+                        saved = save(bookings, bookingsPath);
+                        if(saved)
+                        {
+                            MessageBox.Show("Camera editata cu succes! Toate rezervarile au fost reatribuite!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("A aparut o eroare");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("A aparut o eroare");
+                    }
                     this.Dispose();
                 } catch (Exception ex)
                 {

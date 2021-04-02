@@ -9,15 +9,15 @@ namespace HotelManagement
     [Serializable]
     public class Booking: IComparable<Booking>, ICloneable
     {
-        User user;
-        Room room;
+        string userCNP;
+        int roomId;
         DateTime startDate;
         DateTime endDate;
 
-        public Booking(User user, Room room, DateTime startDate, DateTime endDate)
+        public Booking(string userCNP, int roomId, DateTime startDate, DateTime endDate)
         {
-            this.user = user;
-            this.Room = room;
+            this.UserCNP = userCNP;
+            this.RoomId = roomId;
             this.startDate = startDate;
             this.endDate = endDate;
         }
@@ -29,22 +29,28 @@ namespace HotelManagement
             set { if (DateTime.Compare(value, startDate) > 0) endDate = value; }
         }
 
-        public Room Room { get => room; set => room = value; }
-        internal User User { get => user; set => user = value; }
+        public string UserCNP { get => userCNP; set => userCNP = value; }
+        public int RoomId { get => roomId; set => roomId = value; }
+
+        //public int CompareTo(Booking obj)
+        //{
+        //    return startDate.CompareTo(obj.startDate);
+        //}
 
         public int CompareTo(Booking obj)
         {
-            return startDate.CompareTo(obj.startDate);
+            return (obj.roomId == this.roomId && obj.startDate == this.startDate && obj.endDate == this.endDate && obj.userCNP == this.userCNP) ? 1 : 0;
         }
+
         public object Clone()
         {
             return this.MemberwiseClone();
         }
 
-        public double getValoareTotala()
-        {
-            return getNumberOfDays() * room.Price;
-        }
+        //public double getValoareTotala()
+        //{
+        //    return getNumberOfDays() * room.Price;
+        //}
 
         public int getNumberOfDays()
         {
@@ -53,8 +59,12 @@ namespace HotelManagement
 
         public override string ToString()
         {
-            string response = "Rezervare pentru:  \n" + user + "\n";
-            response += "Camera " + Room;
+            //string response = "Rezervare pentru:  \n" + user + "\n";
+            //response += "Camera " + Room;
+            //response += "\nIncepe la " + startDate.ToLocalTime() + " si se termina la " + endDate + "\n";
+
+            string response = "Rezervare pentru:  \n" + userCNP + "\n";
+            response += "Camera " + roomId;
             response += "\nIncepe la " + startDate.ToLocalTime() + " si se termina la " + endDate + "\n";
             return response;
 

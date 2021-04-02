@@ -13,10 +13,14 @@ namespace HotelManagement.views.RoomsController
     public partial class AddRoom : Form
     {
         List<Room> rooms;
-        public AddRoom(List<Room> r)
+        Func<object, string, bool> save;
+        string roomsPath;
+        public AddRoom(List<Room> r, Func<object, string, bool> save, string roomsPath)
         {
             InitializeComponent();
             rooms = r;
+            this.save = save;
+            this.roomsPath = roomsPath;
         }
 
         private void Btn_Add_Room_Click(object sender, EventArgs e)
@@ -64,17 +68,18 @@ namespace HotelManagement.views.RoomsController
             {
                 try
                 {
-                    rooms.Add(new Room(number, Int32.Parse(this.Select_capacitate.Text), price, this.CB_camera_premium.Checked, false));
-                    foreach (Room room in rooms)
-                    {
-                        Console.WriteLine(room);
-                    }
+                    Room newRoom = new Room(number, Int32.Parse(this.Select_capacitate.Text), price, this.CB_camera_premium.Checked, false);
+                    rooms.Add(newRoom);
 
-                    tb_numar.Clear();
-                    tb_pret.Clear();
-                    Select_capacitate.SelectedIndex = -1;
-                    CB_camera_premium.Checked = false;
-                    MessageBox.Show("Camera adaugata cu succes!");
+                    bool saved = save(rooms, roomsPath);
+
+                    if (saved)
+                    {
+                        MessageBox.Show("Camera adaugata cu succes!");
+                    } else
+                    {
+                        MessageBox.Show("A aparut o eroare!");
+                    }
 
                 }
                 catch (Exception ex)
@@ -83,6 +88,10 @@ namespace HotelManagement.views.RoomsController
                 }
                 finally
                 {
+                    tb_numar.Clear();
+                    tb_pret.Clear();
+                    Select_capacitate.SelectedIndex = -1;
+                    CB_camera_premium.Checked = false;
                     errorProvider1.Clear();
                 }
             }
@@ -97,5 +106,6 @@ namespace HotelManagement.views.RoomsController
         {
             this.Dispose();
         }
+
     }
 }

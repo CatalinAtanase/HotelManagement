@@ -14,10 +14,14 @@ namespace HotelManagement.views.UsersController
     public partial class AddUser : Form
     {
         List<User> users;
-        public AddUser(List<User> users)
+        Func<object, string, bool> save;
+        string savePath;
+        public AddUser(List<User> users, Func<object, string, bool> save, string savePath)
         {
             InitializeComponent();
             this.users = users;
+            this.save = save;
+            this.savePath = savePath;
         }
 
         private void Btn_Add_User_Click(object sender, EventArgs e)
@@ -71,19 +75,27 @@ namespace HotelManagement.views.UsersController
             {
                 try
                 {
-                    users.Add(new User(firstName, lastName, cnp, email, phone));
-                    this.tb_nume.Clear();
-                    this.tb_prenume.Clear();
-                    this.tb_email.Clear();
-                    this.tb_cnp.Clear();
-                    this.tb_telefon.Clear();
+                    User newUser = new User(firstName, lastName, cnp, email, phone);
+                    users.Add(newUser);
+                    bool saved = save(users, savePath);
+                    if(saved)
+                    {
+                        MessageBox.Show("Client adaugat cu succes!");
+                    } else
+                    {
+                        MessageBox.Show("A aparut o problema la salvare!");
+                    }
 
-                    MessageBox.Show("Client adaugat cu succes!");
                 } catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 } finally
                 {
+                    this.tb_nume.Clear();
+                    this.tb_prenume.Clear();
+                    this.tb_email.Clear();
+                    this.tb_cnp.Clear();
+                    this.tb_telefon.Clear();
                     errorProvider1.Clear();
                 }
             }

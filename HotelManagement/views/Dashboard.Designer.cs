@@ -186,6 +186,7 @@
             this.btn_saveBookings.Text = "Salveaza rezervari";
             this.btn_saveBookings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_saveBookings.UseVisualStyleBackColor = false;
+            this.btn_saveBookings.Click += new System.EventHandler(this.btn_saveBookings_Click);
             // 
             // btn_show_bookings
             // 
@@ -351,7 +352,6 @@
             this.panel_childForm.Padding = new System.Windows.Forms.Padding(30);
             this.panel_childForm.Size = new System.Drawing.Size(1050, 689);
             this.panel_childForm.TabIndex = 1;
-            this.panel_childForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_childForm_Paint);
             // 
             // Dashboard
             // 

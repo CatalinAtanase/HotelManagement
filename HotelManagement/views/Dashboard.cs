@@ -23,6 +23,7 @@ namespace HotelManagement.views
         List<Booking> bookings = new List<Booking>();
         private const string roomsPath = "rooms.bin";
         private const string usersPath = "users.bin";
+        private const string bookingsPath = "rezervari.bin";
         public Dashboard(List<Room> r, List<User> users, List<Booking> bookings)
         {
             InitializeComponent();
@@ -33,12 +34,29 @@ namespace HotelManagement.views
             {
                 this.users = (List<User>)Deserialize(usersPath);
                 this.rooms = (List<Room>)Deserialize(roomsPath);
+                this.bookings = (List<Booking>)Deserialize(bookingsPath);
+                markRoomsAsBooked(this.bookings);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void markRoomsAsBooked(List<Booking> bookings)
+        {
+            foreach(Booking booking in bookings)
+            {
+                Room room = rooms.Find((r) => r.Id == booking.RoomId);
+                if ((booking.StartDate - DateTime.Now).Hours <= 0)
+                {
+                    room.IsBooked = true;
+                } else
+                {
+                    room.IsBooked = false;
+                }
+            }
         }
 
         private void hideSubMenu()
@@ -96,48 +114,51 @@ namespace HotelManagement.views
 
         private void btn_add_camere_Click(object sender, EventArgs e)
         {
-            openChildForm(new AddRoom(rooms));
+            openChildForm(new AddRoom(rooms, Serialize, roomsPath));
         }
 
-        private void panel_childForm_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btn_show_camere_Click(object sender, EventArgs e)
         {
-            openChildForm(new listView_showRoom(rooms));
+            openChildForm(new listView_showRoom(rooms, Serialize, roomsPath, bookings, bookingsPath));
         }
 
         private void btn_add_client_Click(object sender, EventArgs e)
         {
-            openChildForm(new AddUser(users));
+            openChildForm(new AddUser(users, Serialize, usersPath));
         }
 
         private void btn_show_clients_Click(object sender, EventArgs e)
         {
-            openChildForm(new ShowUsers(users));
+            openChildForm(new ShowUsers(users, Serialize, usersPath, bookings, bookingsPath));
         }
 
         private void btn_show_bookings_Click(object sender, EventArgs e)
         {
-            openChildForm(new ShowBookings(bookings, users, rooms));
+            openChildForm(new ShowBookings(bookings, users, rooms, Serialize, bookingsPath, roomsPath));
         }
 
         private void btn_add_booking_Click(object sender, EventArgs e)
         {
-            openChildForm(new AddBooking(bookings, users, rooms));
+            openChildForm(new AddBooking(bookings, users, rooms, Serialize, usersPath, bookingsPath, roomsPath));
         }
 
-        public static void Serialize(object value, string path)
+        public static bool Serialize(object value, string path)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+            try
             {
-                formatter.Serialize(fStream, value);
-                Console.WriteLine("msj");
+                BinaryFormatter formatter = new BinaryFormatter();
+
+                using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(fStream, value);
+                }
+                return true;
+            } catch (Exception ex)
+            {
+                return false;
             }
+            
         }
 
         public static object Deserialize(string path)
@@ -183,6 +204,28 @@ namespace HotelManagement.views
                 {
                     Serialize(users, usersPath);
                     MessageBox.Show("Clienti salvati in fisierul " + usersPath + "!");
+                }
+                if (activeForm != null)
+                {
+                    activeForm.Dispose();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_saveBookings_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Salvare rezervari?", "Salveaza rezervari", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Serialize(bookings, bookingsPath);
+                    MessageBox.Show("Rezervari salvate in fisierul " + bookingsPath + "!");
                 }
                 if (activeForm != null)
                 {

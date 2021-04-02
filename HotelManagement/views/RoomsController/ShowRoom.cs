@@ -13,10 +13,19 @@ namespace HotelManagement.views.RoomsController
     public partial class listView_showRoom : Form
     {
         List<Room> rooms;
-        public listView_showRoom(List<Room> r)
+        Func<object, string, bool> save;
+        string roomsPath;
+        List<Booking> bookings;
+        string bookingsPath;
+
+        public listView_showRoom(List<Room> r, Func<object, string, bool> save, string roomsPath, List<Booking> bookings, string bookingsPath)
         {
             InitializeComponent();
             this.rooms = r;
+            this.save = save;
+            this.roomsPath = roomsPath;
+            this.bookings = bookings;
+            this.bookingsPath = bookingsPath;
             displayList();
         }
 
@@ -37,7 +46,7 @@ namespace HotelManagement.views.RoomsController
             {
                 DataGridViewRow selectedRow = dgv_showRooms.SelectedRows[0];
                 Room room = (Room)selectedRow.Tag;
-                Form editRoom = new EditRoom(rooms, room);
+                Form editRoom = new EditRoom(rooms, room, save, roomsPath, bookings, bookingsPath);
                 editRoom.ShowDialog();
                 displayList();
             }
@@ -49,8 +58,29 @@ namespace HotelManagement.views.RoomsController
             {
                 DataGridViewRow selectedRow = dgv_showRooms.SelectedRows[0];
                 Room room = (Room)selectedRow.Tag;
-                rooms.Remove(room);
-                MessageBox.Show("Camera stersa cu succes!");
+
+                bookings.RemoveAll((b) => b.RoomId == room.Id);
+
+                bool saved = save(bookings, bookingsPath);
+                if (saved)
+                {
+                    rooms.Remove(room);
+                    saved = save(rooms, roomsPath);
+
+                    if (saved)
+                    {
+                        MessageBox.Show("Camera stersa cu succes!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("A aparut o eroare!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("A aparut o eroare!");
+                }
+
                 displayList();
             }
         }
