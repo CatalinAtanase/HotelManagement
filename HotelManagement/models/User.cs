@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelManagement.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,46 +7,25 @@ using System.Threading.Tasks;
 
 namespace HotelManagement
 {
-
     [Serializable]
-    public class User
+    public class User : Persoana
     {
-        private string firstName;
-        private string lastName;
-        private string cnp;
         private string email;
         private string phone;
-        //Booking[] bookings;
 
-        public User(string firstName, string lastName, string cnp, string email, string phone)
+        public User(string firstName, string lastName, string cnp, string email, string phone): base(firstName, lastName, cnp)
         {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.Cnp = cnp;
             this.Email = email;
             this.Phone = phone;
         }
+
+        ~User() { }
 
         public string getFullName()
         {
             return lastName + " " + firstName;
         }
         
-        public string FirstName
-        {
-            get => firstName;
-            set { if (value != null) firstName = value; }
-        }
-        public string LastName
-        {
-            get => lastName;
-            set { if (value != null) lastName = value; }
-        }
-        public string Cnp
-        {
-            get => cnp;
-            set { if (value.Length == 13) cnp = value; }
-        }
         public string Email
         {
             get => email;
@@ -55,6 +35,15 @@ namespace HotelManagement
         {
             get => phone;
             set { if (value != null) phone = value; }
+        }
+
+        public override int getAge()
+        {
+            int year = DateTime.Now.Year;
+            string birthdayYear = this.cnp.Substring(1, 2);
+            birthdayYear = "19" + birthdayYear;
+
+            return year - Int32.Parse(birthdayYear);
         }
 
         public override string ToString()

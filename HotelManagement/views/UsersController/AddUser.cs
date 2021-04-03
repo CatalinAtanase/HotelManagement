@@ -16,6 +16,7 @@ namespace HotelManagement.views.UsersController
         List<User> users;
         Func<object, string, bool> save;
         string savePath;
+
         public AddUser(List<User> users, Func<object, string, bool> save, string savePath)
         {
             InitializeComponent();
@@ -77,6 +78,7 @@ namespace HotelManagement.views.UsersController
                 {
                     User newUser = new User(firstName, lastName, cnp, email, phone);
                     users.Add(newUser);
+
                     bool saved = save(users, savePath);
                     if(saved)
                     {
