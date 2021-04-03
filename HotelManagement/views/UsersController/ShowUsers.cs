@@ -13,17 +13,17 @@ namespace HotelManagement.views.UsersController
     public partial class ShowUsers : Form
     {
         List<User> users;
-        Func<object, string, bool> save;
-        string savePath;
+        string usersPath;
         string bookingsPath;
         List<Booking> bookings;
 
-        public ShowUsers(List<User> users, Func<object, string, bool> save, string savePath, List<Booking> bookings, string bookingsPath)
+        public event CallBack SaveObjects;
+
+        public ShowUsers(List<User> users, string usersPath, List<Booking> bookings, string bookingsPath)
         {
             InitializeComponent();
             this.users = users;
-            this.save = save;
-            this.savePath = savePath;
+            this.usersPath = usersPath;
             this.bookings = bookings;
             this.bookingsPath = bookingsPath;
             displayList();
@@ -48,25 +48,12 @@ namespace HotelManagement.views.UsersController
                 User user= (User)selectedRow.Tag;
 
                 bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
-                bool saved = save(bookings, bookingsPath);
-                if (!saved)
-                {
-                    MessageBox.Show("A aparut o problema la salvare!");
-                }
-                else
-                {
-                    users.Remove(user);
-                    saved = save(users, savePath);
-                    if (saved)
-                    {
-                        MessageBox.Show("Client sters cu succes! Rezervarile acestuia au fost sterse!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("A aparut o problema la salvare!");
-                    }
-                }
+                SaveObjects?.Invoke(bookings, bookingsPath);
 
+                users.Remove(user);
+                SaveObjects?.Invoke(users, usersPath);
+
+                MessageBox.Show("Client sters cu succes! Rezervarile acestuia au fost sterse!");
                 displayList();
             }
         }
@@ -77,7 +64,8 @@ namespace HotelManagement.views.UsersController
             {
                 DataGridViewRow selectedRow = dgv_users.SelectedRows[0];
                 User user = (User)selectedRow.Tag;
-                Form editUser = new EditUser(users, user, save, savePath, bookings, bookingsPath);
+                EditUser editUser = new EditUser(users, user, usersPath, bookings, bookingsPath);
+                editUser.SaveObjects += SaveObjects;
                 editUser.ShowDialog();
                 displayList();
             }

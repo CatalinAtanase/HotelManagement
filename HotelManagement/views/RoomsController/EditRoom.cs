@@ -14,15 +14,15 @@ namespace HotelManagement.views.RoomsController
     {
         public List<Room> rooms;
         public Room room;
-        Func<object, string, bool> save;
         string roomsPath;
         List<Booking> bookings;
         string bookingsPath;
-        public EditRoom(List<Room> rooms, Room room, Func<object, string, bool> save, string roomsPath, List<Booking> bookings, string bookingsPath)
+
+        public event CallBack SaveObjects;
+        public EditRoom(List<Room> rooms, Room room, string roomsPath, List<Booking> bookings, string bookingsPath)
         {
             this.room = room;
             this.rooms = rooms;
-            this.save = save;
             this.roomsPath = roomsPath;
             this.bookings = bookings;
             this.bookingsPath = bookingsPath;
@@ -50,7 +50,7 @@ namespace HotelManagement.views.RoomsController
                 MessageBox.Show("Numar invalid!");
             }
 
-            if (rooms.Any(r => r.Id == number && r.Id != room.Id))
+            if (rooms.Any(r => r.Id == number && r.CompareTo(room) != 0))
             {
                 isValid = false;
                 MessageBox.Show("Exista o camera cu acest numar!", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -78,7 +78,6 @@ namespace HotelManagement.views.RoomsController
             {
                 try
                 {
-
                     List<Booking> tempBookings;
                     tempBookings = bookings.FindAll((b) => b.RoomId == room.Id);
 
@@ -87,33 +86,21 @@ namespace HotelManagement.views.RoomsController
                     room.Capacity = capacitate;
                     room.IsPremium = this.CB_camera_premium.Checked;
 
-                    bool saved = save(rooms, roomsPath);
-                    if (saved)
-                    {
-                        foreach(Booking booking in bookings)
-                        {
-                            if(tempBookings.Contains(booking))
-                            {
-                                booking.RoomId = room.Id;
-                            }
-                        }
+                    SaveObjects?.Invoke(rooms, roomsPath);
 
-                        saved = save(bookings, bookingsPath);
-                        if(saved)
-                        {
-                            MessageBox.Show("Camera editata cu succes! Toate rezervarile au fost reatribuite!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("A aparut o eroare");
-                        }
-                    }
-                    else
+                    foreach (Booking booking in bookings)
                     {
-                        MessageBox.Show("A aparut o eroare");
+                        if (tempBookings.Contains(booking))
+                        {
+                            booking.RoomId = room.Id;
+                        }
                     }
+                    SaveObjects?.Invoke(bookings, bookingsPath);
+
+                    MessageBox.Show("Camera editata cu succes! Toate rezervarile au fost reatribuite!");
                     this.Dispose();
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }

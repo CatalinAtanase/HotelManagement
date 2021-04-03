@@ -13,16 +13,16 @@ namespace HotelManagement.views.RoomsController
     public partial class listView_showRoom : Form
     {
         List<Room> rooms;
-        Func<object, string, bool> save;
         string roomsPath;
         List<Booking> bookings;
         string bookingsPath;
 
-        public listView_showRoom(List<Room> r, Func<object, string, bool> save, string roomsPath, List<Booking> bookings, string bookingsPath)
+        public event CallBack SaveObjects;
+
+        public listView_showRoom(List<Room> r, string roomsPath, List<Booking> bookings, string bookingsPath)
         {
             InitializeComponent();
             this.rooms = r;
-            this.save = save;
             this.roomsPath = roomsPath;
             this.bookings = bookings;
             this.bookingsPath = bookingsPath;
@@ -32,7 +32,7 @@ namespace HotelManagement.views.RoomsController
         private void displayList()
         {
             dgv_showRooms.Rows.Clear();
-            rooms.Sort((a,b)=>a.Id < b.Id ? 0 : 1);
+            rooms.Sort((a, b) => a.Id < b.Id ? 0 : 1);
             foreach (Room r in rooms)
             {
                 int rowIndex = this.dgv_showRooms.Rows.Add(r.Id, r.Capacity, r.IsPremium, r.Price, r.IsBooked);
@@ -42,11 +42,12 @@ namespace HotelManagement.views.RoomsController
 
         private void Btn_Edit_Room_Click(object sender, EventArgs e)
         {
-            if(dgv_showRooms.SelectedRows.Count == 1)
+            if (dgv_showRooms.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedRow = dgv_showRooms.SelectedRows[0];
                 Room room = (Room)selectedRow.Tag;
-                Form editRoom = new EditRoom(rooms, room, save, roomsPath, bookings, bookingsPath);
+                EditRoom editRoom = new EditRoom(rooms, room, roomsPath, bookings, bookingsPath);
+                editRoom.SaveObjects += SaveObjects;
                 editRoom.ShowDialog();
                 displayList();
             }
@@ -60,31 +61,19 @@ namespace HotelManagement.views.RoomsController
                 Room room = (Room)selectedRow.Tag;
 
                 bookings.RemoveAll((b) => b.RoomId == room.Id);
+                SaveObjects?.Invoke(bookings, bookingsPath);
 
-                bool saved = save(bookings, bookingsPath);
-                if (saved)
-                {
-                    rooms.Remove(room);
-                    saved = save(rooms, roomsPath);
 
-                    if (saved)
-                    {
-                        MessageBox.Show("Camera stersa cu succes!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("A aparut o eroare!");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("A aparut o eroare!");
-                }
+                rooms.Remove(room);
+                SaveObjects?.Invoke(rooms, roomsPath);
 
+                MessageBox.Show("Camera stersa cu succes!");
                 displayList();
+            }
+            else
+            {
+                MessageBox.Show("Prea multe linii selectate!");
             }
         }
     }
-
-   
 }

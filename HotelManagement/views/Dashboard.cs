@@ -15,6 +15,7 @@ using System.Windows.Forms;
 
 namespace HotelManagement.views
 {
+    public delegate void CallBack(object obj, string path);
     public partial class Dashboard : Form
     {
         private Form activeForm = null;
@@ -114,36 +115,66 @@ namespace HotelManagement.views
 
         private void btn_add_camere_Click(object sender, EventArgs e)
         {
-            openChildForm(new AddRoom(rooms, Serialize, roomsPath));
+            AddRoom form = new AddRoom(rooms, roomsPath);
+            form.SaveRooms += Serialize;
+            openChildForm(form);
         }
 
 
         private void btn_show_camere_Click(object sender, EventArgs e)
         {
-            openChildForm(new listView_showRoom(rooms, Serialize, roomsPath, bookings, bookingsPath));
+            listView_showRoom form = new listView_showRoom(rooms, roomsPath, bookings, bookingsPath);
+            form.SaveObjects += Serialize;
+            openChildForm(form);
         }
 
         private void btn_add_client_Click(object sender, EventArgs e)
         {
-            openChildForm(new AddUser(users, Serialize, usersPath));
+            AddUser form = new AddUser(users, usersPath);
+            form.SaveUsers += Serialize;
+            openChildForm(form);
         }
 
         private void btn_show_clients_Click(object sender, EventArgs e)
         {
-            openChildForm(new ShowUsers(users, Serialize, usersPath, bookings, bookingsPath));
+            ShowUsers form = new ShowUsers(users, usersPath, bookings, bookingsPath);
+            form.SaveObjects += Serialize;
+            openChildForm(form);
         }
 
         private void btn_show_bookings_Click(object sender, EventArgs e)
         {
-            openChildForm(new ShowBookings(bookings, users, rooms, Serialize, bookingsPath, roomsPath));
+            ShowBookings form = new ShowBookings(bookings, users, rooms, bookingsPath, roomsPath);
+            form.SaveObjects += Serialize;
+            openChildForm(form);
         }
 
         private void btn_add_booking_Click(object sender, EventArgs e)
         {
-            openChildForm(new AddBooking(bookings, users, rooms, Serialize, usersPath, bookingsPath, roomsPath));
+            AddBooking form = new AddBooking(bookings, users, rooms, usersPath, bookingsPath, roomsPath);
+            form.SaveObjects += Serialize;
+            openChildForm(form);
         }
 
-        public static bool Serialize(object value, string path)
+        //public static bool Serialize(object value, string path)
+        //{
+        //    try
+        //    {
+        //        BinaryFormatter formatter = new BinaryFormatter();
+
+        //        using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+        //        {
+        //            formatter.Serialize(fStream, value);
+        //        }
+        //        return true;
+        //    } catch (Exception ex)
+        //    {
+        //        return false;
+        //    }
+            
+        //}
+
+        public static void Serialize(object value, string path)
         {
             try
             {
@@ -153,12 +184,11 @@ namespace HotelManagement.views
                 {
                     formatter.Serialize(fStream, value);
                 }
-                return true;
-            } catch (Exception ex)
-            {
-                return false;
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public static object Deserialize(string path)

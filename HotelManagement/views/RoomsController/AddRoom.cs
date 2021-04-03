@@ -10,16 +10,18 @@ using System.Windows.Forms;
 
 namespace HotelManagement.views.RoomsController
 {
+
     public partial class AddRoom : Form
     {
         List<Room> rooms;
-        Func<object, string, bool> save;
         string roomsPath;
-        public AddRoom(List<Room> r, Func<object, string, bool> save, string roomsPath)
+
+        public event CallBack SaveRooms;
+
+        public AddRoom(List<Room> r,  string roomsPath)
         {
             InitializeComponent();
             rooms = r;
-            this.save = save;
             this.roomsPath = roomsPath;
         }
 
@@ -71,16 +73,8 @@ namespace HotelManagement.views.RoomsController
                     Room newRoom = new Room(number, Int32.Parse(this.Select_capacitate.Text), price, this.CB_camera_premium.Checked, false);
                     rooms.Add(newRoom);
 
-                    bool saved = save(rooms, roomsPath);
-
-                    if (saved)
-                    {
-                        MessageBox.Show("Camera adaugata cu succes!");
-                    } else
-                    {
-                        MessageBox.Show("A aparut o eroare!");
-                    }
-
+                    SaveRooms?.Invoke(rooms, roomsPath);
+                    MessageBox.Show("Camera adaugata cu succes!");
                 }
                 catch (Exception ex)
                 {

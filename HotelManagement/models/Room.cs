@@ -59,7 +59,7 @@ namespace HotelManagement
 
         public int CompareTo(Room room)
         {
-            return price.CompareTo(room.price);
+            return this.id.CompareTo(room.id);
         }
     }
 }

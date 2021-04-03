@@ -43,10 +43,6 @@ namespace HotelManagement
             return this.MemberwiseClone();
         }
 
-        //public double getValoareTotala()
-        //{
-        //    return getNumberOfDays() * room.Price;
-        //}
         public double getTotalPrice(List<Room> rooms)
         {
             Room room = rooms.FirstOrDefault(r => r.Id == roomId);

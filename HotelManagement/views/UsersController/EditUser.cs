@@ -14,17 +14,17 @@ namespace HotelManagement.views.UsersController
     {
         List<User> users;
         User user;
-        Func<object, string, bool> save;
-        string savePath;
+        string usersPath;
         string bookingsPath;
         List<Booking> bookings;
-        public EditUser(List<User> users, User user, Func<object, string, bool> save, string savePath, List<Booking> bookings, string bookingsPath)
+
+        public event CallBack SaveObjects;
+        public EditUser(List<User> users, User user, string usersPath, List<Booking> bookings, string bookingsPath)
         {
             InitializeComponent();
             this.user = user;
             this.users = users;
-            this.save = save;
-            this.savePath = savePath;
+            this.usersPath = usersPath;
             this.bookings = bookings;
             this.bookingsPath = bookingsPath;
         }
@@ -60,7 +60,7 @@ namespace HotelManagement.views.UsersController
                 MessageBox.Show("Nu ati completat corect campul de CNP!");
             }
 
-            else if (users.Any(u => u.Cnp == cnp && user.Cnp != u.Cnp))
+            else if (users.Any(u => u.Cnp == cnp && u.CompareTo(user) != 0))
             {
                 isValid = false;
                 MessageBox.Show("Exista un client cu acest cnp!");
@@ -91,32 +91,18 @@ namespace HotelManagement.views.UsersController
                     user.Email = email;
                     user.Cnp = cnp;
 
-                    bool saved = save(users, savePath);
-                    if (saved)
-                    {
-                        foreach (Booking booking in bookings)
-                        {
-                            if (tempBookings.Contains(booking))
-                            {
-                                booking.UserCNP = user.Cnp;
-                            }
-                        }
+                    SaveObjects?.Invoke(users, usersPath);
 
-                        saved = save(bookings, bookingsPath);
-                        if (saved)
-                        {
-                            MessageBox.Show("Datele clientului au fost editate cu succes! Toate rezervarile au fost reatribuite!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("A aparut o problema la salvare!");
-                        }
-                    }
-                    else
+                    foreach (Booking booking in bookings)
                     {
-                        MessageBox.Show("A aparut o problema la salvare!");
+                        if (tempBookings.Contains(booking))
+                        {
+                            booking.UserCNP = user.Cnp;
+                        }
                     }
-                   
+                    SaveObjects?.Invoke(bookings, bookingsPath);
+
+                    MessageBox.Show("Datele clientului au fost editate cu succes! Toate rezervarile au fost reatribuite!");
                     this.Dispose();
                 }
                 catch (Exception ex)

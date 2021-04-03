@@ -17,18 +17,18 @@ namespace HotelManagement.views.BookingsController
         List<User> users = new List<User>();
         List<Room> rooms = new List<Room>();
         Booking booking;
-        Func<object, string, bool> save;
         string bookingsPath;
         string roomsPath;
-        
-        public EditBooking(List<Booking> bookings, List<User> users, List<Room> rooms, Booking booking, Func<object, string, bool> save, string bookingsPath, string roomsPath)
+
+        public event CallBack SaveObjects;
+
+        public EditBooking(List<Booking> bookings, List<User> users, List<Room> rooms, Booking booking, string bookingsPath, string roomsPath)
         {
             InitializeComponent();
             this.bookings = bookings;
             this.users = users;
             this.rooms = rooms;
             this.booking = booking;
-            this.save = save;
             this.bookingsPath = bookingsPath;
             this.roomsPath = roomsPath;
         }
@@ -112,7 +112,6 @@ namespace HotelManagement.views.BookingsController
             {
                 try
                 {
-                    bool saved = true;
                     Item selected = this.Select_user.SelectedItem as Item;
                     User user = users.Find((u) => u.Cnp == selected.cnp);
                     Room room = rooms.Find((r) => r.Id.ToString() == this.select_camera.SelectedItem.ToString());
@@ -120,27 +119,21 @@ namespace HotelManagement.views.BookingsController
                     if ((startDate - DateTime.Now).Hours <= 0)
                     {
                         room.IsBooked = true;
-                    } else
+                    }
+                    else
                     {
                         room.IsBooked = false;
                     }
-                    saved = save(rooms, roomsPath);
+                    SaveObjects?.Invoke(rooms, roomsPath);
 
                     booking.UserCNP = user.Cnp;
                     booking.RoomId = room.Id;
                     booking.StartDate = startDate;
                     booking.EndDate = endDate;
 
-                    saved = save(bookings, bookingsPath);
-                    if (saved)
-                    {
-                        MessageBox.Show("Rezervare editata cu succes!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("A aparut o eroare!");
-                    }
+                    SaveObjects?.Invoke(bookings, bookingsPath);
 
+                    MessageBox.Show("Rezervare editata cu succes!");
                 }
                 catch (Exception ex)
                 {

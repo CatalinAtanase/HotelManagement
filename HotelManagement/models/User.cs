@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace HotelManagement
 {
     [Serializable]
-    public class User : Persoana
+    public class User : Persoana, IComparable<User>
     {
         private string email;
         private string phone;
@@ -54,6 +54,11 @@ namespace HotelManagement
                 "Telefon: {3}",
                 firstName + " " + lastName, cnp, email, phone
             );
+        }
+
+        public int CompareTo(User user)
+        {
+            return this.cnp.CompareTo(user.cnp);
         }
     }
 }

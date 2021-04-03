@@ -11,17 +11,18 @@ using System.Windows.Forms;
 
 namespace HotelManagement.views.UsersController
 {
+
     public partial class AddUser : Form
     {
         List<User> users;
-        Func<object, string, bool> save;
         string savePath;
 
-        public AddUser(List<User> users, Func<object, string, bool> save, string savePath)
+        public event CallBack SaveUsers;
+
+        public AddUser(List<User> users, string savePath)
         {
             InitializeComponent();
             this.users = users;
-            this.save = save;
             this.savePath = savePath;
         }
 
@@ -79,14 +80,9 @@ namespace HotelManagement.views.UsersController
                     User newUser = new User(firstName, lastName, cnp, email, phone);
                     users.Add(newUser);
 
-                    bool saved = save(users, savePath);
-                    if(saved)
-                    {
-                        MessageBox.Show("Client adaugat cu succes!");
-                    } else
-                    {
-                        MessageBox.Show("A aparut o problema la salvare!");
-                    }
+                    SaveUsers?.Invoke(users, savePath);
+
+                    MessageBox.Show("Client adaugat cu succes!");
 
                 } catch(Exception ex)
                 {

@@ -150,7 +150,7 @@
             this.select_checkOut.Name = "select_checkOut";
             this.select_checkOut.Size = new System.Drawing.Size(261, 30);
             this.select_checkOut.TabIndex = 53;
-            this.select_checkOut.Value = new System.DateTime(2021, 3, 31, 0, 59, 39, 0);
+            this.select_checkOut.Value = new System.DateTime(2021, 4, 4, 0, 0, 0, 0);
             // 
             // select_camera
             // 
