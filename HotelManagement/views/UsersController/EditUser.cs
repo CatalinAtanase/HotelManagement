@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +19,8 @@ namespace HotelManagement.views.UsersController
         string usersPath;
         string bookingsPath;
         List<Booking> bookings;
+        ArrayList emails = new ArrayList();
+
 
         public event CallBack SaveObjects;
         public EditUser(List<User> users, User user, string usersPath, List<Booking> bookings, string bookingsPath)
@@ -27,6 +31,9 @@ namespace HotelManagement.views.UsersController
             this.usersPath = usersPath;
             this.bookings = bookings;
             this.bookingsPath = bookingsPath;
+            this.emails.Add(this.tb_email);
+            this.emails.Add(this.tb_email2);
+            this.emails.Add(this.tb_email3);
         }
         private void Cancel_Button_Click(object sender, EventArgs e)
         {
@@ -41,6 +48,10 @@ namespace HotelManagement.views.UsersController
             string cnp = this.tb_cnp.Text.Trim();
             string email = this.tb_email.Text.Trim();
             bool isValid = true;
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+            string[] emailValues = new string[emails.Count];
+
 
             if (String.IsNullOrEmpty(lastName))
             {
@@ -66,7 +77,7 @@ namespace HotelManagement.views.UsersController
                 MessageBox.Show("Exista un client cu acest cnp!");
             }
 
-            else if (String.IsNullOrEmpty(email) || !email.Contains("@"))
+            else if (String.IsNullOrEmpty(email) || !match.Success)
             {
                 isValid = false;
                 MessageBox.Show("Nu ati completat corect campul de email!");
@@ -82,14 +93,27 @@ namespace HotelManagement.views.UsersController
             {
                 try
                 {
+
                     List<Booking> tempBookings;
                     tempBookings = bookings.FindAll((b) => b.UserCNP == user.Cnp);
 
                     user.FirstName = firstName;
                     user.LastName = lastName;
                     user.Phone = phone;
-                    user.Email = email;
                     user.Cnp = cnp;
+
+                    for (int i = 0; i < emailValues.Length; i++)
+                    {
+                        if (emailValues.Contains(((TextBox)emails[i]).Text) && !string.IsNullOrEmpty(((TextBox)emails[i]).Text))
+                        {
+                            MessageBox.Show("Adresa de mail deja exista!");
+                            return;
+                        }
+                        emailValues[i] = ((TextBox)emails[i]).Text;
+                    }
+
+                    user.Emails = new string[emailValues.Length];
+                    emailValues.CopyTo(user.Emails, 0);
 
                     SaveObjects?.Invoke(users, usersPath);
 
@@ -119,7 +143,12 @@ namespace HotelManagement.views.UsersController
             this.tb_nume.Text = user.LastName;
             this.tb_telefon.Text = user.Phone;
             this.tb_cnp.Text = user.Cnp;
-            this.tb_email.Text = user.Email;
+            this.tb_email.Text = user[0];
+            for(int i = 1; i < user.NrEmails; i++)
+            {
+                ((TextBox)emails[i]).Text = user[i];
+            }
         }
+       
     }
 }

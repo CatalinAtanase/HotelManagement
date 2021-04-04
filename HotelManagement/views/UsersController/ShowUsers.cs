@@ -16,15 +16,19 @@ namespace HotelManagement.views.UsersController
         string usersPath;
         string bookingsPath;
         List<Booking> bookings;
+        List<Room> rooms;
+        string roomsPath;
 
         public event CallBack SaveObjects;
 
-        public ShowUsers(List<User> users, string usersPath, List<Booking> bookings, string bookingsPath)
+        public ShowUsers(List<User> users, string usersPath, List<Booking> bookings, string bookingsPath, List<Room> rooms, string roomsPath)
         {
             InitializeComponent();
             this.users = users;
             this.usersPath = usersPath;
+            this.roomsPath = roomsPath;
             this.bookings = bookings;
+            this.rooms = rooms;
             this.bookingsPath = bookingsPath;
             displayList();
         }
@@ -35,7 +39,8 @@ namespace HotelManagement.views.UsersController
             users.Sort((a, b) => String.Compare(a.LastName, b.LastName));
             foreach (User u in users)
             {
-                int rowIndex = this.dgv_users.Rows.Add(u.LastName, u.FirstName, u.Email, u.Cnp, u.Phone);
+                string emails = string.Join(", ", u.Emails);
+                int rowIndex = this.dgv_users.Rows.Add(u.LastName, u.FirstName, emails, u.Cnp, u.Phone);
                 this.dgv_users.Rows[rowIndex].Tag = u;
             }
         }
@@ -46,6 +51,10 @@ namespace HotelManagement.views.UsersController
             {
                 DataGridViewRow selectedRow = dgv_users.SelectedRows[0];
                 User user= (User)selectedRow.Tag;
+
+
+                rooms.Find(r => r.Id == bookings.Find(b => b.UserCNP == user.Cnp).RoomId).IsBooked = false;
+                SaveObjects?.Invoke(rooms, roomsPath);
 
                 bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
                 SaveObjects?.Invoke(bookings, bookingsPath);

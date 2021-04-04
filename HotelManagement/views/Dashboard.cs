@@ -34,15 +34,29 @@ namespace HotelManagement.views
             try
             {
                 this.users = (List<User>)Deserialize(usersPath);
-                this.rooms = (List<Room>)Deserialize(roomsPath);
-                this.bookings = (List<Booking>)Deserialize(bookingsPath);
-                markRoomsAsBooked(this.bookings);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+            try
+            {
+                this.rooms = (List<Room>)Deserialize(roomsPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            try
+            {
+                this.bookings = (List<Booking>)Deserialize(bookingsPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            markRoomsAsBooked(this.bookings);
         }
 
         private void markRoomsAsBooked(List<Booking> bookings)
@@ -137,7 +151,7 @@ namespace HotelManagement.views
 
         private void btn_show_clients_Click(object sender, EventArgs e)
         {
-            ShowUsers form = new ShowUsers(users, usersPath, bookings, bookingsPath);
+            ShowUsers form = new ShowUsers(users, usersPath, bookings, bookingsPath, rooms, roomsPath);
             form.SaveObjects += Serialize;
             openChildForm(form);
         }

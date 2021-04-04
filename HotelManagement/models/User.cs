@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 namespace HotelManagement
 {
     [Serializable]
-    public class User : Persoana, IComparable<User>
+    public class User : Persoana, IComparable<User>, ICloneable
     {
-        private string email;
+        private string[] emails;
         private string phone;
 
-        //todo change email to array 
-
-        public User(string firstName, string lastName, string cnp, string email, string phone): base(firstName, lastName, cnp)
+        public User(string firstName, string lastName, string cnp,  string phone) : base(firstName, lastName, cnp)
         {
-            this.Email = email;
-            this.Phone = phone;
+            this.emails = null;
+            this.phone = phone;
         }
+
+        //todo change email to array 
 
         ~User() { }
 
@@ -27,17 +27,69 @@ namespace HotelManagement
         {
             return lastName + " " + firstName;
         }
-        
-        public string Email
+
+
+        public int NrEmails
         {
-            get => email;
-            set { if (value.Contains("@")) email = value; }
+            get
+            {
+                return emails != null ? emails.Length : 0;
+            }
         }
+
+        public string this[int index]
+        {
+            get
+            {
+                return emails != null && index >= 0 && index < emails.Length ? emails[index] : "";
+            }
+        }
+
+        public object Clone()
+        {
+            return ((ICloneable)this).Clone();
+        }
+
+        object ICloneable.Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+
+
+        public static User operator +(User user, string email)
+        {
+            User u = (User)user.Clone();
+            string[] newEmails = new string[u.NrEmails + 1];
+            if(u.emails != null)
+            {
+                for (int i = 0; i < u.NrEmails; i++)
+                {
+                    newEmails[i] = u.emails[i];
+                }
+
+                newEmails[u.NrEmails - 1] = email;
+            } else
+            {
+                newEmails[0] = email;
+            }
+
+            return u;
+        }
+
+        public static User operator +(string email, User u)
+        {
+            return u + email;
+        }
+
+
         public string Phone
         {
             get => phone;
             set { if (value != null) phone = value; }
         }
+
+        public string[] Emails { get => emails; set => emails = value; }
 
         public override int getAge()
         {
@@ -54,7 +106,7 @@ namespace HotelManagement
                 "CNP: {1}\n" +
                 "Email: {2}\n" +
                 "Telefon: {3}",
-                firstName + " " + lastName, cnp, email, phone
+                firstName + " " + lastName, cnp, string.Join(", ", emails), phone
             );
         }
 

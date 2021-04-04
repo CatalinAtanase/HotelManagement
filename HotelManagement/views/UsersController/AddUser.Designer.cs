@@ -43,19 +43,24 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tb_cnp = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_add_email = new System.Windows.Forms.Button();
+            this.btn_remove_email = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Cancel_Button
             // 
             this.Cancel_Button.BackColor = System.Drawing.Color.Red;
             this.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Cancel_Button.Dock = System.Windows.Forms.DockStyle.Right;
             this.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancel_Button.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cancel_Button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Cancel_Button.Location = new System.Drawing.Point(452, 502);
+            this.Cancel_Button.Location = new System.Drawing.Point(757, 0);
             this.Cancel_Button.Name = "Cancel_Button";
-            this.Cancel_Button.Size = new System.Drawing.Size(121, 35);
+            this.Cancel_Button.Size = new System.Drawing.Size(121, 100);
             this.Cancel_Button.TabIndex = 7;
             this.Cancel_Button.Text = "Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
@@ -64,11 +69,12 @@
             // Btn_Add_User
             // 
             this.Btn_Add_User.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Btn_Add_User.Dock = System.Windows.Forms.DockStyle.Right;
             this.Btn_Add_User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Add_User.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Add_User.Location = new System.Drawing.Point(312, 502);
+            this.Btn_Add_User.Location = new System.Drawing.Point(636, 0);
             this.Btn_Add_User.Name = "Btn_Add_User";
-            this.Btn_Add_User.Size = new System.Drawing.Size(121, 35);
+            this.Btn_Add_User.Size = new System.Drawing.Size(121, 100);
             this.Btn_Add_User.TabIndex = 6;
             this.Btn_Add_User.Text = "Adauga";
             this.Btn_Add_User.UseVisualStyleBackColor = true;
@@ -178,19 +184,57 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.Btn_Add_User);
+            this.panel1.Controls.Add(this.Cancel_Button);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 495);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(878, 100);
+            this.panel1.TabIndex = 40;
+            // 
+            // btn_add_email
+            // 
+            this.btn_add_email.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_add_email.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add_email.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add_email.Location = new System.Drawing.Point(170, 442);
+            this.btn_add_email.Name = "btn_add_email";
+            this.btn_add_email.Size = new System.Drawing.Size(121, 30);
+            this.btn_add_email.TabIndex = 41;
+            this.btn_add_email.Text = "Adauga Email";
+            this.btn_add_email.UseVisualStyleBackColor = true;
+            this.btn_add_email.Click += new System.EventHandler(this.btn_add_email_Click);
+            // 
+            // btn_remove_email
+            // 
+            this.btn_remove_email.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_remove_email.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_remove_email.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_remove_email.Location = new System.Drawing.Point(593, 442);
+            this.btn_remove_email.Name = "btn_remove_email";
+            this.btn_remove_email.Size = new System.Drawing.Size(121, 30);
+            this.btn_remove_email.TabIndex = 42;
+            this.btn_remove_email.Text = "Sterge Email";
+            this.btn_remove_email.UseVisualStyleBackColor = true;
+            this.btn_remove_email.Click += new System.EventHandler(this.btn_remove_email_Click);
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(878, 595);
+            this.Controls.Add(this.btn_remove_email);
+            this.Controls.Add(this.btn_add_email);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tb_cnp);
             this.Controls.Add(this.tb_email);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tb_telefon);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Cancel_Button);
-            this.Controls.Add(this.Btn_Add_User);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tb_prenume);
             this.Controls.Add(this.label2);
@@ -202,6 +246,7 @@
             this.Tag = "";
             this.Text = "AddUser";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +268,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tb_cnp;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btn_remove_email;
+        private System.Windows.Forms.Button btn_add_email;
+        private System.Windows.Forms.Panel panel1;
     }
 }

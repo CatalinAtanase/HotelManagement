@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace HotelManagement.views.UsersController
     {
         List<User> users;
         string savePath;
+        ArrayList emails = new ArrayList();
 
         public event CallBack SaveUsers;
 
@@ -24,6 +26,7 @@ namespace HotelManagement.views.UsersController
             InitializeComponent();
             this.users = users;
             this.savePath = savePath;
+            this.emails.Add(this.tb_email);
         }
 
         private void Btn_Add_User_Click(object sender, EventArgs e)
@@ -36,6 +39,8 @@ namespace HotelManagement.views.UsersController
             bool isValid = true;
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
+            string[] emailValues = new string[emails.Count];
+
 
             if (String.IsNullOrEmpty(lastName))
             {
@@ -61,12 +66,6 @@ namespace HotelManagement.views.UsersController
                 MessageBox.Show("Exista un client cu acest cnp!");
             }
 
-            else if (String.IsNullOrEmpty(email) || !match.Success)
-            {
-                isValid = false;
-                errorProvider1.SetError(tb_email, "Nu ati completat corect campul de email!");
-            }
-            
             else if (String.IsNullOrEmpty(phone))
             {
                 isValid = false;
@@ -75,11 +74,34 @@ namespace HotelManagement.views.UsersController
 
             if (isValid)
             {
+
+                for(int i = 0; i < emails.Count; i++)
+                {
+                    TextBox tb = (TextBox)emails[i];
+
+                    if(String.IsNullOrEmpty(tb.Text) || !match.Success)
+                    {
+                        errorProvider1.SetError(tb, "Nu ati completat corect campul de email");
+                        return;
+                    }
+                }
+
                 try
                 {
-                    User newUser = new User(firstName, lastName, cnp, email, phone);
-                    users.Add(newUser);
+                    User newUser = new User(firstName, lastName, cnp, phone);
+                    for(int i = 0; i < emailValues.Length; i++)
+                    {
+                        if(emailValues.Contains(((TextBox)emails[i]).Text))
+                        {
+                            MessageBox.Show("Adresa de mail deja exista!");
+                            return;
+                        }
+                        emailValues[i] = ((TextBox)emails[i]).Text;
+                    }
+                    newUser.Emails = new string[emailValues.Length];
+                    emailValues.CopyTo(newUser.Emails, 0);
 
+                    users.Add(newUser);
                     SaveUsers?.Invoke(users, savePath);
 
                     MessageBox.Show("Client adaugat cu succes!");
@@ -91,9 +113,12 @@ namespace HotelManagement.views.UsersController
                 {
                     this.tb_nume.Clear();
                     this.tb_prenume.Clear();
-                    this.tb_email.Clear();
                     this.tb_cnp.Clear();
                     this.tb_telefon.Clear();
+                    for (int i = 0; i < emails.Count; i++)
+                    {
+                        ((TextBox)emails[i]).Clear();
+                    }
                     errorProvider1.Clear();
                 }
             }
@@ -102,6 +127,30 @@ namespace HotelManagement.views.UsersController
         private void Cancel_Button_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void btn_add_email_Click(object sender, EventArgs e)
+        {
+            if (this.emails.Count < 3)
+            {
+
+                int x = ((TextBox)emails[0]).Location.X;
+                int y = ((TextBox)emails[emails.Count - 1]).Location.Y;
+
+                TextBox tb = new TextBox();
+                tb.Location = new Point(x, y + 50);
+                tb.Size = new System.Drawing.Size(198, 50);
+                emails.Add(tb);
+                this.Controls.Add(tb);
+            }
+        }
+
+        private void btn_remove_email_Click(object sender, EventArgs e)
+        {
+            if(this.emails.Count > 1) {
+                this.Controls.Remove((TextBox)this.emails[emails.Count - 1]);
+                this.emails.RemoveAt(emails.Count - 1);
+            }
         }
     }
 }

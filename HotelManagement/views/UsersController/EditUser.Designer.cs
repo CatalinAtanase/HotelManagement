@@ -41,6 +41,8 @@
             this.tb_nume = new System.Windows.Forms.TextBox();
             this.label = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tb_email3 = new System.Windows.Forms.TextBox();
+            this.tb_email2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tb_cnp
@@ -65,9 +67,9 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(291, 405);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 23);
+            this.label5.Size = new System.Drawing.Size(70, 23);
             this.label5.TabIndex = 52;
-            this.label5.Text = "Email";
+            this.label5.Text = "Emails";
             // 
             // tb_telefon
             // 
@@ -94,7 +96,7 @@
             this.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancel_Button.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cancel_Button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Cancel_Button.Location = new System.Drawing.Point(436, 492);
+            this.Cancel_Button.Location = new System.Drawing.Point(679, 533);
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(121, 35);
             this.Cancel_Button.TabIndex = 7;
@@ -107,7 +109,7 @@
             this.Btn_Edit_User.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Btn_Edit_User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Edit_User.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Edit_User.Location = new System.Drawing.Point(296, 492);
+            this.Btn_Edit_User.Location = new System.Drawing.Point(679, 479);
             this.Btn_Edit_User.Name = "Btn_Edit_User";
             this.Btn_Edit_User.Size = new System.Drawing.Size(121, 35);
             this.Btn_Edit_User.TabIndex = 6;
@@ -171,26 +173,44 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "Editeaza Client";
             // 
+            // tb_email3
+            // 
+            this.tb_email3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_email3.Location = new System.Drawing.Point(295, 534);
+            this.tb_email3.Name = "tb_email3";
+            this.tb_email3.Size = new System.Drawing.Size(261, 30);
+            this.tb_email3.TabIndex = 53;
+            // 
+            // tb_email2
+            // 
+            this.tb_email2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_email2.Location = new System.Drawing.Point(295, 484);
+            this.tb_email2.Name = "tb_email2";
+            this.tb_email2.Size = new System.Drawing.Size(261, 30);
+            this.tb_email2.TabIndex = 54;
+            // 
             // EditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(878, 595);
+            this.Controls.Add(this.tb_email2);
+            this.Controls.Add(this.tb_email3);
+            this.Controls.Add(this.Cancel_Button);
+            this.Controls.Add(this.Btn_Edit_User);
             this.Controls.Add(this.tb_cnp);
             this.Controls.Add(this.tb_email);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tb_telefon);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Cancel_Button);
-            this.Controls.Add(this.Btn_Edit_User);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tb_prenume);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_nume);
             this.Controls.Add(this.label);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EditUser";
             this.Text = "EditUser";
             this.Load += new System.EventHandler(this.EditUser_Load);
@@ -214,5 +234,7 @@
         private System.Windows.Forms.TextBox tb_nume;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_email3;
+        private System.Windows.Forms.TextBox tb_email2;
     }
 }
