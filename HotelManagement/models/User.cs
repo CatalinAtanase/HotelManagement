@@ -13,6 +13,8 @@ namespace HotelManagement
         private string email;
         private string phone;
 
+        //todo change email to array 
+
         public User(string firstName, string lastName, string cnp, string email, string phone): base(firstName, lastName, cnp)
         {
             this.Email = email;
