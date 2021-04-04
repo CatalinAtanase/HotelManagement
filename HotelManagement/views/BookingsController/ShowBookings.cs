@@ -40,8 +40,14 @@ namespace HotelManagement.views.BookingsController
                 try
                 {
                     User rowUser = users.Find((u) => u.Cnp == b.UserCNP);
-                    int index = this.dgv_bookings.Rows.Add(rowUser.getFullName(), b.StartDate.ToShortDateString(), b.EndDate.ToShortDateString(), b.RoomId);
-                    this.dgv_bookings.Rows[index].Tag = b;
+                    if (rowUser != null)
+                    {
+                        int index = this.dgv_bookings.Rows.Add(rowUser.getFullName(), b.StartDate.ToShortDateString(), b.EndDate.ToShortDateString(), b.getAllRooms());
+                        this.dgv_bookings.Rows[index].Tag = b;
+                    } else
+                    {
+                        MessageBox.Show("Eroare");
+                    }
                 } catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);

@@ -35,7 +35,7 @@ namespace HotelManagement.views
             {
                 this.users = (List<User>)Deserialize(usersPath);
                 this.rooms = (List<Room>)Deserialize(roomsPath);
-                this.bookings = (List<Booking>)Deserialize(bookingsPath);
+               // this.bookings = (List<Booking>)Deserialize(bookingsPath);
                 markRoomsAsBooked(this.bookings);
             }
             catch (Exception ex)

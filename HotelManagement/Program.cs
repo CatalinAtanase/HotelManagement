@@ -22,6 +22,14 @@ namespace HotelManagement
             //Console.WriteLine(rooms[0].CompareTo(rooms[1]));
             //Console.WriteLine(rooms[0].CompareTo(rooms[2]));
 
+            Booking b1 = new Booking("1991031151234", 1, DateTime.Now, DateTime.Now.AddDays(2));
+            b1 = b1 + 3;
+            b1 = b1 + 5;
+
+            bookings.Add(b1);
+
+            Console.WriteLine(b1);
+
             Dashboard dashboard = new Dashboard(rooms, users, bookings);
             Application.Run(dashboard);
         }

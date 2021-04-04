@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.dgv_bookings = new System.Windows.Forms.DataGridView();
+            this.btn_delete_room = new System.Windows.Forms.Button();
+            this.Btn_Edit_Room = new System.Windows.Forms.Button();
             this.Client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Camera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_delete_room = new System.Windows.Forms.Button();
-            this.Btn_Edit_Room = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_bookings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,34 +53,6 @@
             this.dgv_bookings.RowTemplate.Height = 24;
             this.dgv_bookings.Size = new System.Drawing.Size(798, 411);
             this.dgv_bookings.TabIndex = 0;
-            // 
-            // Client
-            // 
-            this.Client.HeaderText = "Client";
-            this.Client.MinimumWidth = 6;
-            this.Client.Name = "Client";
-            this.Client.Width = 125;
-            // 
-            // StartDate
-            // 
-            this.StartDate.HeaderText = "CheckIn";
-            this.StartDate.MinimumWidth = 6;
-            this.StartDate.Name = "StartDate";
-            this.StartDate.Width = 125;
-            // 
-            // EndDate
-            // 
-            this.EndDate.HeaderText = "CheckOut";
-            this.EndDate.MinimumWidth = 6;
-            this.EndDate.Name = "EndDate";
-            this.EndDate.Width = 125;
-            // 
-            // Camera
-            // 
-            this.Camera.HeaderText = "Camera";
-            this.Camera.MinimumWidth = 6;
-            this.Camera.Name = "Camera";
-            this.Camera.Width = 125;
             // 
             // btn_delete_room
             // 
@@ -109,6 +81,34 @@
             this.Btn_Edit_Room.UseVisualStyleBackColor = true;
             this.Btn_Edit_Room.Click += new System.EventHandler(this.Btn_Edit_Room_Click);
             // 
+            // Client
+            // 
+            this.Client.HeaderText = "Client";
+            this.Client.MinimumWidth = 6;
+            this.Client.Name = "Client";
+            this.Client.Width = 125;
+            // 
+            // StartDate
+            // 
+            this.StartDate.HeaderText = "CheckIn";
+            this.StartDate.MinimumWidth = 6;
+            this.StartDate.Name = "StartDate";
+            this.StartDate.Width = 125;
+            // 
+            // EndDate
+            // 
+            this.EndDate.HeaderText = "CheckOut";
+            this.EndDate.MinimumWidth = 6;
+            this.EndDate.Name = "EndDate";
+            this.EndDate.Width = 125;
+            // 
+            // Camera
+            // 
+            this.Camera.HeaderText = "Camere";
+            this.Camera.MinimumWidth = 6;
+            this.Camera.Name = "Camera";
+            this.Camera.Width = 125;
+            // 
             // ShowBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -129,11 +129,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_bookings;
+        private System.Windows.Forms.Button btn_delete_room;
+        private System.Windows.Forms.Button Btn_Edit_Room;
         private System.Windows.Forms.DataGridViewTextBoxColumn Client;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Camera;
-        private System.Windows.Forms.Button btn_delete_room;
-        private System.Windows.Forms.Button Btn_Edit_Room;
     }
 }

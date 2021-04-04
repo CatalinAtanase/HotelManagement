@@ -42,19 +42,24 @@
             this.select_camera = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btn_add_room = new System.Windows.Forms.Button();
+            this.btn_remove_room = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Cancel_Button
             // 
             this.Cancel_Button.BackColor = System.Drawing.Color.Red;
             this.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Cancel_Button.Dock = System.Windows.Forms.DockStyle.Right;
             this.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancel_Button.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cancel_Button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Cancel_Button.Location = new System.Drawing.Point(452, 488);
+            this.Cancel_Button.Location = new System.Drawing.Point(757, 0);
             this.Cancel_Button.Name = "Cancel_Button";
-            this.Cancel_Button.Size = new System.Drawing.Size(121, 35);
+            this.Cancel_Button.Size = new System.Drawing.Size(121, 100);
             this.Cancel_Button.TabIndex = 46;
             this.Cancel_Button.Text = "Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
@@ -63,11 +68,12 @@
             // Btn_Add_Booking
             // 
             this.Btn_Add_Booking.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Btn_Add_Booking.Dock = System.Windows.Forms.DockStyle.Right;
             this.Btn_Add_Booking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Add_Booking.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Add_Booking.Location = new System.Drawing.Point(312, 488);
+            this.Btn_Add_Booking.Location = new System.Drawing.Point(636, 0);
             this.Btn_Add_Booking.Name = "Btn_Add_Booking";
-            this.Btn_Add_Booking.Size = new System.Drawing.Size(121, 35);
+            this.Btn_Add_Booking.Size = new System.Drawing.Size(121, 100);
             this.Btn_Add_Booking.TabIndex = 45;
             this.Btn_Add_Booking.Text = "Adauga";
             this.Btn_Add_Booking.UseVisualStyleBackColor = true;
@@ -175,12 +181,52 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btn_add_room
+            // 
+            this.btn_add_room.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_add_room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add_room.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add_room.Location = new System.Drawing.Point(153, 419);
+            this.btn_add_room.Name = "btn_add_room";
+            this.btn_add_room.Size = new System.Drawing.Size(139, 33);
+            this.btn_add_room.TabIndex = 57;
+            this.btn_add_room.Text = "Adauga Camera";
+            this.btn_add_room.UseVisualStyleBackColor = true;
+            this.btn_add_room.Click += new System.EventHandler(this.btn_add_room_Click);
+            // 
+            // btn_remove_room
+            // 
+            this.btn_remove_room.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_remove_room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_remove_room.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_remove_room.Location = new System.Drawing.Point(594, 419);
+            this.btn_remove_room.Name = "btn_remove_room";
+            this.btn_remove_room.Size = new System.Drawing.Size(139, 33);
+            this.btn_remove_room.TabIndex = 58;
+            this.btn_remove_room.Text = "Sterge Camera";
+            this.btn_remove_room.UseVisualStyleBackColor = true;
+            this.btn_remove_room.Click += new System.EventHandler(this.btn_remove_room_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.Btn_Add_Booking);
+            this.panel1.Controls.Add(this.Cancel_Button);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 495);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(878, 100);
+            this.panel1.TabIndex = 59;
+            // 
             // AddBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(878, 595);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btn_remove_room);
+            this.Controls.Add(this.btn_add_room);
             this.Controls.Add(this.select_camera);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -190,14 +236,13 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Select_user);
             this.Controls.Add(this.label);
-            this.Controls.Add(this.Cancel_Button);
-            this.Controls.Add(this.Btn_Add_Booking);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddBooking";
             this.Text = "AddBooking";
             this.Load += new System.EventHandler(this.AddBooking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +263,8 @@
         private System.Windows.Forms.ComboBox select_camera;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btn_remove_room;
+        private System.Windows.Forms.Button btn_add_room;
+        private System.Windows.Forms.Panel panel1;
     }
 }
