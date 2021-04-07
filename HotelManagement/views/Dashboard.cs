@@ -282,5 +282,27 @@ namespace HotelManagement.views
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void cameraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddRoom form = new AddRoom(rooms, roomsPath);
+            form.SaveRooms += Serialize;
+            openChildForm(form);
+        }
+
+        private void rezervareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddBooking form = new AddBooking(bookings, users, rooms, usersPath, bookingsPath, roomsPath);
+            form.SaveObjects += Serialize;
+            openChildForm(form);
+        }
+
+        private void clientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddUser form = new AddUser(users, usersPath);
+            form.SaveUsers += Serialize;
+            openChildForm(form);
+        }
     }
 }
+

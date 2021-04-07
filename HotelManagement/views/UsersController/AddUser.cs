@@ -79,7 +79,7 @@ namespace HotelManagement.views.UsersController
                 {
                     TextBox tb = (TextBox)emails[i];
 
-                    if(String.IsNullOrEmpty(tb.Text) || !match.Success)
+                    if(String.IsNullOrEmpty(tb.Text) || !regex.Match(tb.Text).Success)
                     {
                         errorProvider1.SetError(tb, "Nu ati completat corect campul de email");
                         return;
@@ -151,6 +151,19 @@ namespace HotelManagement.views.UsersController
                 this.Controls.Remove((TextBox)this.emails[emails.Count - 1]);
                 this.emails.RemoveAt(emails.Count - 1);
             }
+        }
+
+        private void stergeCampuriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.tb_nume.Clear();
+            this.tb_prenume.Clear();
+            this.tb_cnp.Clear();
+            this.tb_telefon.Clear();
+            for (int i = 0; i < emails.Count; i++)
+            {
+                ((TextBox)emails[i]).Clear();
+            }
+            errorProvider1.Clear();
         }
     }
 }

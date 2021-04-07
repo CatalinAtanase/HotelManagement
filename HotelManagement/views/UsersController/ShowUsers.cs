@@ -79,5 +79,59 @@ namespace HotelManagement.views.UsersController
                 displayList();
             }
         }
+
+        private void editeazaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell selectedCol = dgv_users.SelectedCells[0];
+
+            if (dgv_users.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = selectedCol.OwningRow;
+                User user = (User)selectedRow.Tag;
+                EditUser editUser = new EditUser(users, user, usersPath, bookings, bookingsPath);
+                editUser.SaveObjects += SaveObjects;
+                editUser.ShowDialog();
+                displayList();
+            }
+        }
+
+        private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                DataGridViewCell selectedCol = dgv_users.SelectedCells[0];
+
+                if (dgv_users.SelectedCells.Count == 1)
+                {
+                    DataGridViewRow selectedRow = selectedCol.OwningRow;
+                    User user = (User)selectedRow.Tag;
+
+                    List<Booking> bookingsFound = bookings.FindAll(b => b.UserCNP == user.Cnp);
+                    if (bookingsFound.Count != 0)
+                    {
+                        List<Room> roomsFound = rooms.FindAll(r => r.Id == bookings.Find(b => b.UserCNP == user.Cnp).RoomId);
+                        foreach (Room r in roomsFound)
+                        {
+                            r.IsBooked = false;
+                        }
+                    }
+                    SaveObjects?.Invoke(rooms, roomsPath);
+
+                    bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
+                    SaveObjects?.Invoke(bookings, bookingsPath);
+
+                    users.Remove(user);
+                    SaveObjects?.Invoke(users, usersPath);
+
+                    MessageBox.Show("Client sters cu succes! Rezervarile acestuia au fost sterse!");
+                    displayList();
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine("Nu exista rezervari");
+            }
+
+        }
     }
 }

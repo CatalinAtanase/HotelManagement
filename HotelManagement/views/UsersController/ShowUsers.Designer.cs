@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgv_users = new System.Windows.Forms.DataGridView();
             this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prenume = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,7 +37,11 @@
             this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_delete_room = new System.Windows.Forms.Button();
             this.Btn_Edit_Room = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_users)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_users
@@ -49,6 +54,7 @@
             this.Email,
             this.CNP,
             this.Telefon});
+            this.dgv_users.ContextMenuStrip = this.contextMenuStrip1;
             this.dgv_users.Location = new System.Drawing.Point(63, 52);
             this.dgv_users.Name = "dgv_users";
             this.dgv_users.RowHeadersWidth = 51;
@@ -118,6 +124,29 @@
             this.Btn_Edit_Room.UseVisualStyleBackColor = true;
             this.Btn_Edit_Room.Click += new System.EventHandler(this.Btn_Edit_Room_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editeazaToolStripMenuItem,
+            this.stergeToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 80);
+            // 
+            // editeazaToolStripMenuItem
+            // 
+            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
+            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editeazaToolStripMenuItem.Text = "Editeaza";
+            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
+            // 
+            // stergeToolStripMenuItem
+            // 
+            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.stergeToolStripMenuItem.Text = "Sterge";
+            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
+            // 
             // ShowUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -130,6 +159,7 @@
             this.Name = "ShowUsers";
             this.Text = "ShowUsers";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_users)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -144,5 +174,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
         private System.Windows.Forms.Button btn_delete_room;
         private System.Windows.Forms.Button Btn_Edit_Room;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem editeazaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stergeToolStripMenuItem;
     }
 }

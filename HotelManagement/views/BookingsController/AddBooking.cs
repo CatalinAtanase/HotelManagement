@@ -149,6 +149,14 @@ namespace HotelManagement.views.BookingsController
         {
 
         }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Select_user.SelectedIndex = -1;
+            this.Select_user.Text = "";
+            this.select_camera.SelectedIndex = -1;
+            this.select_camera.Text = "";
+        }
     }
 }
 

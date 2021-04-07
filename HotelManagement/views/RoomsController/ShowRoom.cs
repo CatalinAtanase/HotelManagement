@@ -75,5 +75,41 @@ namespace HotelManagement.views.RoomsController
                 MessageBox.Show("Prea multe linii selectate!");
             }
         }
+
+        private void editeazaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell selectedCol = dgv_showRooms.SelectedCells[0];
+
+            if (dgv_showRooms.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = selectedCol.OwningRow;
+                Room room = (Room)selectedRow.Tag;
+                EditRoom editRoom = new EditRoom(rooms, room, roomsPath, bookings, bookingsPath);
+                editRoom.SaveObjects += SaveObjects;
+                editRoom.ShowDialog();
+                displayList();
+            }
+        }
+
+        private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell selectedCol = dgv_showRooms.SelectedCells[0];
+
+            if (dgv_showRooms.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = selectedCol.OwningRow;
+                Room room = (Room)selectedRow.Tag;
+
+                bookings.RemoveAll((b) => b.RoomId == room.Id);
+                SaveObjects?.Invoke(bookings, bookingsPath);
+
+
+                rooms.Remove(room);
+                SaveObjects?.Invoke(rooms, roomsPath);
+
+                MessageBox.Show("Camera stersa cu succes!");
+                displayList();
+            }
+        }
     }
 }

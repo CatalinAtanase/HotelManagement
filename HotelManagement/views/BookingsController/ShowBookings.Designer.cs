@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgv_bookings = new System.Windows.Forms.DataGridView();
             this.Client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -35,7 +36,11 @@
             this.Camera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_delete_room = new System.Windows.Forms.Button();
             this.Btn_Edit_Room = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_bookings)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_bookings
@@ -47,6 +52,7 @@
             this.StartDate,
             this.EndDate,
             this.Camera});
+            this.dgv_bookings.ContextMenuStrip = this.contextMenuStrip1;
             this.dgv_bookings.Location = new System.Drawing.Point(105, 76);
             this.dgv_bookings.Name = "dgv_bookings";
             this.dgv_bookings.RowHeadersWidth = 51;
@@ -109,6 +115,29 @@
             this.Btn_Edit_Room.UseVisualStyleBackColor = true;
             this.Btn_Edit_Room.Click += new System.EventHandler(this.Btn_Edit_Room_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editeazaToolStripMenuItem,
+            this.stergeToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 80);
+            // 
+            // editeazaToolStripMenuItem
+            // 
+            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
+            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editeazaToolStripMenuItem.Text = "Editeaza";
+            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
+            // 
+            // stergeToolStripMenuItem
+            // 
+            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.stergeToolStripMenuItem.Text = "Sterge";
+            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
+            // 
             // ShowBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -122,6 +151,7 @@
             this.Name = "ShowBookings";
             this.Text = "ShowBookings";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_bookings)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -135,5 +165,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Camera;
         private System.Windows.Forms.Button btn_delete_room;
         private System.Windows.Forms.Button Btn_Edit_Room;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem editeazaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stergeToolStripMenuItem;
     }
 }

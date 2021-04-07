@@ -170,7 +170,7 @@
             this.Controls.Add(this.Cancel_Button);
             this.Controls.Add(this.Btn_Edit_Booking);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EditBooking";
             this.Text = "EditBooking";
             this.Load += new System.EventHandler(this.EditBooking_Load);

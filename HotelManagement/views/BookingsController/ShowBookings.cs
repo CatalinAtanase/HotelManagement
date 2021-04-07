@@ -79,5 +79,37 @@ namespace HotelManagement.views.BookingsController
                 displayList();
             }
         }
+
+        private void editeazaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell cell = dgv_bookings.SelectedCells[0];
+            if (dgv_bookings.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = cell.OwningRow;
+                Booking booking = (Booking)selectedRow.Tag;
+                EditBooking editBooking = new EditBooking(bookings, users, rooms, booking, bookingsPath, roomsPath);
+                editBooking.SaveObjects += SaveObjects;
+                editBooking.ShowDialog();
+                displayList();
+            }
+        }
+
+        private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell cell = dgv_bookings.SelectedCells[0];
+            if (dgv_bookings.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = cell.OwningRow;
+                Booking booking = (Booking)selectedRow.Tag;
+
+                rooms.Find((r) => r.Id == booking.RoomId).IsBooked = false;
+                SaveObjects?.Invoke(rooms, roomsPath);
+
+                bookings.Remove(booking);
+                SaveObjects?.Invoke(bookings, bookingsPath);
+                MessageBox.Show("Rezervare stearsa cu succes!");
+                displayList();
+            }
+        }
     }
 }

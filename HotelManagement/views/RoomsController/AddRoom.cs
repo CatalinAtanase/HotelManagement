@@ -101,5 +101,14 @@ namespace HotelManagement.views.RoomsController
             this.Dispose();
         }
 
+        private void stergeCampuriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tb_numar.Clear();
+            tb_pret.Clear();
+            Select_capacitate.SelectedIndex = -1;
+            Select_capacitate.Text = "";
+            CB_camera_premium.Checked = false;
+            errorProvider1.Clear();
+        }
     }
 }

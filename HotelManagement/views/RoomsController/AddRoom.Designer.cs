@@ -40,7 +40,10 @@
             this.Btn_Add_Room = new System.Windows.Forms.Button();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.stergeCampuriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -158,12 +161,28 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stergeCampuriToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(180, 28);
+            // 
+            // stergeCampuriToolStripMenuItem
+            // 
+            this.stergeCampuriToolStripMenuItem.Name = "stergeCampuriToolStripMenuItem";
+            this.stergeCampuriToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.stergeCampuriToolStripMenuItem.Text = "Sterge campuri";
+            this.stergeCampuriToolStripMenuItem.Click += new System.EventHandler(this.stergeCampuriToolStripMenuItem_Click);
+            // 
             // AddRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(896, 642);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.Cancel_Button);
             this.Controls.Add(this.Btn_Add_Room);
             this.Controls.Add(this.CB_camera_premium);
@@ -178,6 +197,7 @@
             this.Name = "AddRoom";
             this.Text = "AddRoom";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +216,7 @@
         private System.Windows.Forms.Button Btn_Add_Room;
         public System.Windows.Forms.Button Cancel_Button;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem stergeCampuriToolStripMenuItem;
     }
 }

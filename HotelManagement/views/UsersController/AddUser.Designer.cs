@@ -46,8 +46,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_add_email = new System.Windows.Forms.Button();
             this.btn_remove_email = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.stergeCampuriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Cancel_Button
@@ -60,7 +63,7 @@
             this.Cancel_Button.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Cancel_Button.Location = new System.Drawing.Point(757, 0);
             this.Cancel_Button.Name = "Cancel_Button";
-            this.Cancel_Button.Size = new System.Drawing.Size(121, 100);
+            this.Cancel_Button.Size = new System.Drawing.Size(121, 49);
             this.Cancel_Button.TabIndex = 7;
             this.Cancel_Button.Text = "Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
@@ -74,7 +77,7 @@
             this.Btn_Add_User.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Add_User.Location = new System.Drawing.Point(636, 0);
             this.Btn_Add_User.Name = "Btn_Add_User";
-            this.Btn_Add_User.Size = new System.Drawing.Size(121, 100);
+            this.Btn_Add_User.Size = new System.Drawing.Size(121, 49);
             this.Btn_Add_User.TabIndex = 6;
             this.Btn_Add_User.Text = "Adauga";
             this.Btn_Add_User.UseVisualStyleBackColor = true;
@@ -189,9 +192,9 @@
             this.panel1.Controls.Add(this.Btn_Add_User);
             this.panel1.Controls.Add(this.Cancel_Button);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 495);
+            this.panel1.Location = new System.Drawing.Point(0, 546);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(878, 100);
+            this.panel1.Size = new System.Drawing.Size(878, 49);
             this.panel1.TabIndex = 40;
             // 
             // btn_add_email
@@ -220,6 +223,21 @@
             this.btn_remove_email.UseVisualStyleBackColor = true;
             this.btn_remove_email.Click += new System.EventHandler(this.btn_remove_email_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stergeCampuriToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(180, 28);
+            // 
+            // stergeCampuriToolStripMenuItem
+            // 
+            this.stergeCampuriToolStripMenuItem.Name = "stergeCampuriToolStripMenuItem";
+            this.stergeCampuriToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.stergeCampuriToolStripMenuItem.Text = "Sterge campuri";
+            this.stergeCampuriToolStripMenuItem.Click += new System.EventHandler(this.stergeCampuriToolStripMenuItem_Click);
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,6 +245,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(878, 595);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.btn_remove_email);
             this.Controls.Add(this.btn_add_email);
             this.Controls.Add(this.panel1);
@@ -247,6 +266,7 @@
             this.Text = "AddUser";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +291,7 @@
         private System.Windows.Forms.Button btn_remove_email;
         private System.Windows.Forms.Button btn_add_email;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem stergeCampuriToolStripMenuItem;
     }
 }

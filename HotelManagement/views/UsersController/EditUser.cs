@@ -104,7 +104,7 @@ namespace HotelManagement.views.UsersController
 
                     for (int i = 0; i < emailValues.Length; i++)
                     {
-                        if (emailValues.Contains(((TextBox)emails[i]).Text) && !string.IsNullOrEmpty(((TextBox)emails[i]).Text))
+                        if (emailValues.Contains(((TextBox)emails[i]).Text) && !string.IsNullOrEmpty(((TextBox)emails[i]).Text) && !regex.Match(((TextBox)emails[i]).Text).Success)
                         {
                             MessageBox.Show("Adresa de mail deja exista!");
                             return;
