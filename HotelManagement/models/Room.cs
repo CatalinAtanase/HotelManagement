@@ -57,6 +57,16 @@ namespace HotelManagement
             return this.MemberwiseClone();
         }
 
+        public static Room operator +(Room r, double p) {
+            r.price += p;
+            return r;
+        }
+
+        public static Room operator +(double p, Room r)
+        {
+            return r + p;
+        }
+
         public int CompareTo(Room room)
         {
             return this.id.CompareTo(room.id);

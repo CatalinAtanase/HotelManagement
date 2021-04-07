@@ -303,6 +303,11 @@ namespace HotelManagement.views
             form.SaveUsers += Serialize;
             openChildForm(form);
         }
+
+        private void adaugaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

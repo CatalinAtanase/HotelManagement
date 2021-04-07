@@ -100,7 +100,7 @@
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(121, 35);
             this.Cancel_Button.TabIndex = 7;
-            this.Cancel_Button.Text = "Cancel";
+            this.Cancel_Button.Text = "&Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
@@ -113,7 +113,7 @@
             this.Btn_Edit_User.Name = "Btn_Edit_User";
             this.Btn_Edit_User.Size = new System.Drawing.Size(121, 35);
             this.Btn_Edit_User.TabIndex = 6;
-            this.Btn_Edit_User.Text = "Edit";
+            this.Btn_Edit_User.Text = "&Edit";
             this.Btn_Edit_User.UseVisualStyleBackColor = true;
             this.Btn_Edit_User.Click += new System.EventHandler(this.Btn_Edit_User_Click);
             // 

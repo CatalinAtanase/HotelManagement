@@ -59,7 +59,7 @@
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(121, 35);
             this.Cancel_Button.TabIndex = 46;
-            this.Cancel_Button.Text = "Cancel";
+            this.Cancel_Button.Text = "&Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
@@ -72,7 +72,7 @@
             this.Btn_Add_Booking.Name = "Btn_Add_Booking";
             this.Btn_Add_Booking.Size = new System.Drawing.Size(121, 35);
             this.Btn_Add_Booking.TabIndex = 45;
-            this.Btn_Add_Booking.Text = "Adauga";
+            this.Btn_Add_Booking.Text = "&Adauga";
             this.Btn_Add_Booking.UseVisualStyleBackColor = true;
             this.Btn_Add_Booking.Click += new System.EventHandler(this.Btn_Add_Booking_Click);
             // 
@@ -184,12 +184,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 56);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(180, 28);
             // 
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
             this.menuToolStripMenuItem.Text = "Sterge campuri";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 

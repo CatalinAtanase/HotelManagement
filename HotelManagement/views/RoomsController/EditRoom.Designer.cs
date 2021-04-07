@@ -55,7 +55,7 @@
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(121, 35);
             this.Cancel_Button.TabIndex = 36;
-            this.Cancel_Button.Text = "Cancel";
+            this.Cancel_Button.Text = "&Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
@@ -68,7 +68,7 @@
             this.Btn_FinishEdit_Room.Name = "Btn_FinishEdit_Room";
             this.Btn_FinishEdit_Room.Size = new System.Drawing.Size(121, 35);
             this.Btn_FinishEdit_Room.TabIndex = 35;
-            this.Btn_FinishEdit_Room.Text = "Edit";
+            this.Btn_FinishEdit_Room.Text = "&Edit";
             this.Btn_FinishEdit_Room.UseVisualStyleBackColor = true;
             this.Btn_FinishEdit_Room.Click += new System.EventHandler(this.Btn_FinishEdit_Room_Click);
             // 

@@ -377,8 +377,9 @@
             this.rezervareToolStripMenuItem,
             this.clientToolStripMenuItem});
             this.adaugaToolStripMenuItem.Name = "adaugaToolStripMenuItem";
-            this.adaugaToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
-            this.adaugaToolStripMenuItem.Text = "Adauga";
+            this.adaugaToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.adaugaToolStripMenuItem.Text = "Menu";
+            this.adaugaToolStripMenuItem.Click += new System.EventHandler(this.adaugaToolStripMenuItem_Click);
             // 
             // cameraToolStripMenuItem
             // 

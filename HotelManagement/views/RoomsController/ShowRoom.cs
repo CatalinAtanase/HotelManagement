@@ -111,5 +111,35 @@ namespace HotelManagement.views.RoomsController
                 displayList();
             }
         }
+
+        private void marestrePretCu100ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell selectedCol = dgv_showRooms.SelectedCells[0];
+
+            if (dgv_showRooms.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = selectedCol.OwningRow;
+                Room room = (Room)selectedRow.Tag;
+
+                room = room + 100;
+                SaveObjects?.Invoke(rooms, roomsPath);
+                displayList();
+            }
+        }
+
+        private void scadePretCu100ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell selectedCol = dgv_showRooms.SelectedCells[0];
+
+            if (dgv_showRooms.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = selectedCol.OwningRow;
+                Room room = (Room)selectedRow.Tag;
+
+                room = room + (-100);
+                SaveObjects?.Invoke(rooms, roomsPath);
+                displayList();
+            }
+        }
     }
 }

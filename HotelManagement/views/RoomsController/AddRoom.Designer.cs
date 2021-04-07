@@ -138,7 +138,7 @@
             this.Btn_Add_Room.Name = "Btn_Add_Room";
             this.Btn_Add_Room.Size = new System.Drawing.Size(121, 35);
             this.Btn_Add_Room.TabIndex = 5;
-            this.Btn_Add_Room.Text = "Adauga";
+            this.Btn_Add_Room.Text = "&Adauga";
             this.Btn_Add_Room.UseVisualStyleBackColor = true;
             this.Btn_Add_Room.Click += new System.EventHandler(this.Btn_Add_Room_Click);
             // 
@@ -153,7 +153,7 @@
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(121, 35);
             this.Cancel_Button.TabIndex = 6;
-            this.Cancel_Button.Text = "Cancel";
+            this.Cancel_Button.Text = "&Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
@@ -172,7 +172,7 @@
             // stergeCampuriToolStripMenuItem
             // 
             this.stergeCampuriToolStripMenuItem.Name = "stergeCampuriToolStripMenuItem";
-            this.stergeCampuriToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.stergeCampuriToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
             this.stergeCampuriToolStripMenuItem.Text = "Sterge campuri";
             this.stergeCampuriToolStripMenuItem.Click += new System.EventHandler(this.stergeCampuriToolStripMenuItem_Click);
             // 

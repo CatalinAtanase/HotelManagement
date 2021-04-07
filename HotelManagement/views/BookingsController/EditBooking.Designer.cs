@@ -127,7 +127,7 @@
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Size = new System.Drawing.Size(121, 35);
             this.Cancel_Button.TabIndex = 58;
-            this.Cancel_Button.Text = "Cancel";
+            this.Cancel_Button.Text = "&Cancel";
             this.Cancel_Button.UseVisualStyleBackColor = false;
             // 
             // Btn_Edit_Booking
@@ -139,7 +139,7 @@
             this.Btn_Edit_Booking.Name = "Btn_Edit_Booking";
             this.Btn_Edit_Booking.Size = new System.Drawing.Size(121, 35);
             this.Btn_Edit_Booking.TabIndex = 57;
-            this.Btn_Edit_Booking.Text = "Edit";
+            this.Btn_Edit_Booking.Text = "&Edit";
             this.Btn_Edit_Booking.UseVisualStyleBackColor = true;
             this.Btn_Edit_Booking.Click += new System.EventHandler(this.Btn_Edit_Booking_Click);
             // 
