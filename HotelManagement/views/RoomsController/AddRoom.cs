@@ -70,7 +70,7 @@ namespace HotelManagement.views.RoomsController
             {
                 try
                 {
-                    Room newRoom = new Room(number, Int32.Parse(this.Select_capacitate.Text), price, this.CB_camera_premium.Checked, false);
+                    Room newRoom = new Room(number, Int32.Parse(this.Select_capacitate.Text), price, this.CB_camera_premium.Checked);
                     rooms.Add(newRoom);
 
                     SaveRooms?.Invoke(rooms, roomsPath);

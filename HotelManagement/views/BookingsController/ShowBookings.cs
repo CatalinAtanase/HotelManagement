@@ -57,9 +57,6 @@ namespace HotelManagement.views.BookingsController
                 DataGridViewRow selectedRow = dgv_bookings.SelectedRows[0];
                 Booking booking = (Booking)selectedRow.Tag;
 
-                rooms.Find((r) => r.Id == booking.RoomId).IsBooked = false;
-                SaveObjects?.Invoke(rooms, roomsPath);
-
                 bookings.Remove(booking);
                 SaveObjects?.Invoke(bookings, bookingsPath);
                 MessageBox.Show("Rezervare stearsa cu succes!");
@@ -101,9 +98,6 @@ namespace HotelManagement.views.BookingsController
             {
                 DataGridViewRow selectedRow = cell.OwningRow;
                 Booking booking = (Booking)selectedRow.Tag;
-
-                rooms.Find((r) => r.Id == booking.RoomId).IsBooked = false;
-                SaveObjects?.Invoke(rooms, roomsPath);
 
                 bookings.Remove(booking);
                 SaveObjects?.Invoke(bookings, bookingsPath);

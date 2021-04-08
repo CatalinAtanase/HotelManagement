@@ -45,16 +45,12 @@ namespace HotelManagement.views.UsersController
             }
         }
 
-        private void btn_delete_room_Click(object sender, EventArgs e)
+        private void btn_delete_user_Click(object sender, EventArgs e)
         {
             if (dgv_users.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedRow = dgv_users.SelectedRows[0];
                 User user= (User)selectedRow.Tag;
-
-
-                rooms.Find(r => r.Id == bookings.Find(b => b.UserCNP == user.Cnp).RoomId).IsBooked = false;
-                SaveObjects?.Invoke(rooms, roomsPath);
 
                 bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
                 SaveObjects?.Invoke(bookings, bookingsPath);
@@ -106,17 +102,6 @@ namespace HotelManagement.views.UsersController
                 {
                     DataGridViewRow selectedRow = selectedCol.OwningRow;
                     User user = (User)selectedRow.Tag;
-
-                    List<Booking> bookingsFound = bookings.FindAll(b => b.UserCNP == user.Cnp);
-                    if (bookingsFound.Count != 0)
-                    {
-                        List<Room> roomsFound = rooms.FindAll(r => r.Id == bookings.Find(b => b.UserCNP == user.Cnp).RoomId);
-                        foreach (Room r in roomsFound)
-                        {
-                            r.IsBooked = false;
-                        }
-                    }
-                    SaveObjects?.Invoke(rooms, roomsPath);
 
                     bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
                     SaveObjects?.Invoke(bookings, bookingsPath);

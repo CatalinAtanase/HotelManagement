@@ -12,7 +12,6 @@ namespace HotelManagement
         private int capacity;
         private double price;
         private bool isPremium;
-        private bool isBooked;
 
         public bool IsPremium { get => isPremium; set => isPremium = value; }
         public double Price
@@ -31,25 +30,22 @@ namespace HotelManagement
             set { if (value > 0) id = value; }
         }
 
-        public bool IsBooked { get => isBooked; set => isBooked = value; }
-
         public override string ToString()
         {
-            return String.Format("Camera {0} - capacitate {1} - pret {2} - {3} - {4}",
+            return String.Format("Camera {0} - capacitate {1} - pret {2} - {3}",
                 id,
                 capacity,
                 price,
-                isPremium ? "este premium" : "nu este premium",
-                isBooked ? "este inchiriata" : "nu este inchiriata");
+                isPremium ? "este premium" : "nu este premium"
+               );
         }
 
-        public Room(int id, int capacity, double price, bool isPremium, bool isBooked)
+        public Room(int id, int capacity, double price, bool isPremium)
         {
             this.Id = id;
             this.Capacity = capacity;
             this.Price = price;
             this.isPremium = isPremium;
-            this.IsBooked = isBooked;
         }
 
         public object Clone()

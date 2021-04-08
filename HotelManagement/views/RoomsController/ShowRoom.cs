@@ -35,7 +35,7 @@ namespace HotelManagement.views.RoomsController
             rooms.Sort((a, b) => a.Id < b.Id ? 0 : 1);
             foreach (Room r in rooms)
             {
-                int rowIndex = this.dgv_showRooms.Rows.Add(r.Id, r.Capacity, r.IsPremium, r.Price, r.IsBooked);
+                int rowIndex = this.dgv_showRooms.Rows.Add(r.Id, r.Capacity, r.IsPremium, r.Price);
                 this.dgv_showRooms.Rows[rowIndex].Tag = r;
             }
         }

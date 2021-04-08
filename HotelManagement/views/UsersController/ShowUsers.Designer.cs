@@ -38,7 +38,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_delete_room = new System.Windows.Forms.Button();
+            this.btn_delete_users = new System.Windows.Forms.Button();
             this.Btn_Edit_Room = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_users)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -120,19 +120,19 @@
             this.stergeToolStripMenuItem.Text = "Sterge";
             this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
             // 
-            // btn_delete_room
+            // btn_delete_users
             // 
-            this.btn_delete_room.BackColor = System.Drawing.Color.Red;
-            this.btn_delete_room.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_delete_room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_room.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete_room.Location = new System.Drawing.Point(220, 402);
-            this.btn_delete_room.Name = "btn_delete_room";
-            this.btn_delete_room.Size = new System.Drawing.Size(121, 35);
-            this.btn_delete_room.TabIndex = 29;
-            this.btn_delete_room.Text = "&Delete";
-            this.btn_delete_room.UseVisualStyleBackColor = false;
-            this.btn_delete_room.Click += new System.EventHandler(this.btn_delete_room_Click);
+            this.btn_delete_users.BackColor = System.Drawing.Color.Red;
+            this.btn_delete_users.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_delete_users.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_users.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete_users.Location = new System.Drawing.Point(220, 402);
+            this.btn_delete_users.Name = "btn_delete_users";
+            this.btn_delete_users.Size = new System.Drawing.Size(121, 35);
+            this.btn_delete_users.TabIndex = 29;
+            this.btn_delete_users.Text = "&Delete";
+            this.btn_delete_users.UseVisualStyleBackColor = false;
+            this.btn_delete_users.Click += new System.EventHandler(this.btn_delete_user_Click);
             // 
             // Btn_Edit_Room
             // 
@@ -153,7 +153,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(1032, 595);
-            this.Controls.Add(this.btn_delete_room);
+            this.Controls.Add(this.btn_delete_users);
             this.Controls.Add(this.Btn_Edit_Room);
             this.Controls.Add(this.dgv_users);
             this.Name = "ShowUsers";
@@ -172,7 +172,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
-        private System.Windows.Forms.Button btn_delete_room;
+        private System.Windows.Forms.Button btn_delete_users;
         private System.Windows.Forms.Button Btn_Edit_Room;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editeazaToolStripMenuItem;

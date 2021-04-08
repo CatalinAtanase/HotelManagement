@@ -55,23 +55,6 @@ namespace HotelManagement.views
             {
                 MessageBox.Show(ex.Message);
             }
-
-            markRoomsAsBooked(this.bookings);
-        }
-
-        private void markRoomsAsBooked(List<Booking> bookings)
-        {
-            foreach(Booking booking in bookings)
-            {
-                Room room = rooms.Find((r) => r.Id == booking.RoomId);
-                if ((booking.StartDate - DateTime.Now).Hours <= 0)
-                {
-                    room.IsBooked = true;
-                } else
-                {
-                    room.IsBooked = false;
-                }
-            }
         }
 
         private void hideSubMenu()

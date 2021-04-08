@@ -116,16 +116,6 @@ namespace HotelManagement.views.BookingsController
                     User user = users.Find((u) => u.Cnp == selected.cnp);
                     Room room = rooms.Find((r) => r.Id.ToString() == this.select_camera.SelectedItem.ToString());
 
-                    if ((startDate - DateTime.Now).Hours <= 0)
-                    {
-                        room.IsBooked = true;
-                    }
-                    else
-                    {
-                        room.IsBooked = false;
-                    }
-                    SaveObjects?.Invoke(rooms, roomsPath);
-
                     booking.UserCNP = user.Cnp;
                     booking.RoomId = room.Id;
                     booking.StartDate = startDate;
