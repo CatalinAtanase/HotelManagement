@@ -25,12 +25,10 @@ namespace HotelManagement.views
         private const string roomsPath = "rooms.bin";
         private const string usersPath = "users.bin";
         private const string bookingsPath = "rezervari.bin";
-        public Dashboard(List<Room> r, List<User> users, List<Booking> bookings)
+        public Dashboard()
         {
             InitializeComponent();
-            this.rooms = r;
-            this.users = users;
-            this.bookings = bookings;
+       
             try
             {
                 this.users = (List<User>)Deserialize(usersPath);
