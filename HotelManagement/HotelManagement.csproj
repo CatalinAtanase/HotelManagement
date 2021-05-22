@@ -108,6 +108,12 @@
     <Compile Include="views\RoomsController\ShowRoom.Designer.cs">
       <DependentUpon>ShowRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\RoomsController\Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\RoomsController\Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\UsersController\AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     <EmbeddedResource Include="views\RoomsController\ShowRoom.resx">
       <DependentUpon>ShowRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\RoomsController\Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\UsersController\AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +183,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\send-to-trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel-sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

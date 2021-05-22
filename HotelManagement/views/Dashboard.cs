@@ -200,24 +200,8 @@ namespace HotelManagement.views
 
         private void btn_save_rooms_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DialogResult dialogResult = MessageBox.Show("Salvare camere?", "Salveaza camere", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Serialize(rooms, roomsPath);
-                    MessageBox.Show("Camere salvate in fisierul " + roomsPath + "!");
-                }
-
-                if (activeForm != null)
-                {
-                    activeForm.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Statistics form = new Statistics(bookings);
+            form.ShowDialog();
         }
 
         private void btn_saveUsers_Click(object sender, EventArgs e)

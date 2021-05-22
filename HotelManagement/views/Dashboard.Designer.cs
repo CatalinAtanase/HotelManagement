@@ -44,13 +44,13 @@
             this.btn_show_camere = new System.Windows.Forms.Button();
             this.btn_add_camere = new System.Windows.Forms.Button();
             this.btn_camere_dropdown = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel_childForm = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adaugaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rezervareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel_subMenu_clienti_btns.SuspendLayout();
             this.panel_subMenu_rezervari_btns.SuspendLayout();
@@ -70,7 +70,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(235, 661);
+            this.panel1.Size = new System.Drawing.Size(235, 828);
             this.panel1.TabIndex = 0;
             // 
             // panel_subMenu_clienti_btns
@@ -278,7 +278,7 @@
             this.btn_save_rooms.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btn_save_rooms.Size = new System.Drawing.Size(235, 30);
             this.btn_save_rooms.TabIndex = 6;
-            this.btn_save_rooms.Text = "Salveaza camere";
+            this.btn_save_rooms.Text = "Statistici";
             this.btn_save_rooms.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_save_rooms.UseVisualStyleBackColor = false;
             this.btn_save_rooms.Click += new System.EventHandler(this.btn_save_rooms_Click);
@@ -340,15 +340,6 @@
             this.btn_camere_dropdown.UseVisualStyleBackColor = false;
             this.btn_camere_dropdown.Click += new System.EventHandler(this.btn_camere_dropdown_Click);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(235, 158);
-            this.panel2.TabIndex = 1;
-            // 
             // panel_childForm
             // 
             this.panel_childForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
@@ -356,7 +347,7 @@
             this.panel_childForm.Location = new System.Drawing.Point(235, 28);
             this.panel_childForm.Name = "panel_childForm";
             this.panel_childForm.Padding = new System.Windows.Forms.Padding(30);
-            this.panel_childForm.Size = new System.Drawing.Size(1050, 661);
+            this.panel_childForm.Size = new System.Drawing.Size(1050, 828);
             this.panel_childForm.TabIndex = 1;
             // 
             // menuStrip1
@@ -402,12 +393,23 @@
             this.clientToolStripMenuItem.Text = "Client";
             this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel2.BackgroundImage = global::HotelManagement.Properties.Resources.hotel;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(235, 158);
+            this.panel2.TabIndex = 1;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(1285, 689);
+            this.ClientSize = new System.Drawing.Size(1285, 856);
             this.Controls.Add(this.panel_childForm);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
