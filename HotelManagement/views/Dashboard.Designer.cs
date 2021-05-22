@@ -384,21 +384,21 @@
             // cameraToolStripMenuItem
             // 
             this.cameraToolStripMenuItem.Name = "cameraToolStripMenuItem";
-            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
             this.cameraToolStripMenuItem.Text = "Camera";
             this.cameraToolStripMenuItem.Click += new System.EventHandler(this.cameraToolStripMenuItem_Click);
             // 
             // rezervareToolStripMenuItem
             // 
             this.rezervareToolStripMenuItem.Name = "rezervareToolStripMenuItem";
-            this.rezervareToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rezervareToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
             this.rezervareToolStripMenuItem.Text = "Rezervare";
             this.rezervareToolStripMenuItem.Click += new System.EventHandler(this.rezervareToolStripMenuItem_Click);
             // 
             // clientToolStripMenuItem
             // 
             this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
-            this.clientToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clientToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
             this.clientToolStripMenuItem.Text = "Client";
             this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
             // 
