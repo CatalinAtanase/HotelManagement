@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace HotelManagement
 {
     [Serializable]
-    public class User : Persoana, IComparable<User>, ICloneable
+    public class User : Person, IComparable<User>, ICloneable
     {
         private string[] emails;
         private string phone;

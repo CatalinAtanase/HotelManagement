@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace HotelManagement.models
 {
     [Serializable]
-    public abstract class Persoana
+    public abstract class Person
     {
         protected string firstName;
         protected string lastName;
         protected string cnp;
 
-        protected Persoana(string firstName, string lastName, string cnp)
+        protected Person(string firstName, string lastName, string cnp)
         {
             this.firstName = firstName;
             this.lastName = lastName;

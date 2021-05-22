@@ -16,3 +16,5 @@ D:\Faculta\An_2\S2\PAW\proiect2.0\HotelManagement\HotelManagement\obj\Debug\Hote
 D:\Faculta\An_2\S2\PAW\proiect2.0\HotelManagement\HotelManagement\obj\Debug\HotelManagement.csprojAssemblyReference.cache
 D:\Faculta\An_2\S2\PAW\proiect2.0\HotelManagement\HotelManagement\obj\Debug\HotelManagement.views.BookingsController.AddBooking.resources
 D:\Faculta\An_2\S2\PAW\proiect2.0\HotelManagement\HotelManagement\obj\Debug\HotelManagement.views.BookingsController.EditBooking.resources
+D:\Faculta\An_2\S2\PAW\proiect2.0\HotelManagement\HotelManagement\obj\Debug\HotelManagement.Properties.Resources.resources
+D:\Faculta\An_2\S2\PAW\proiect2.0\HotelManagement\HotelManagement\obj\Debug\HotelManagement.views.BookingsController.DeleteBookings.resources

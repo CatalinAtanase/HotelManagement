@@ -37,8 +37,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_delete_room = new System.Windows.Forms.Button();
             this.Btn_Edit_Room = new System.Windows.Forms.Button();
+            this.btn_delete_room = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_bookings)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +111,19 @@
             this.stergeToolStripMenuItem.Text = "Sterge";
             this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
             // 
+            // Btn_Edit_Room
+            // 
+            this.Btn_Edit_Room.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Btn_Edit_Room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Edit_Room.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Edit_Room.Location = new System.Drawing.Point(105, 525);
+            this.Btn_Edit_Room.Name = "Btn_Edit_Room";
+            this.Btn_Edit_Room.Size = new System.Drawing.Size(121, 35);
+            this.Btn_Edit_Room.TabIndex = 28;
+            this.Btn_Edit_Room.Text = "&Edit";
+            this.Btn_Edit_Room.UseVisualStyleBackColor = true;
+            this.Btn_Edit_Room.Click += new System.EventHandler(this.Btn_Edit_Room_Click);
+            // 
             // btn_delete_room
             // 
             this.btn_delete_room.BackColor = System.Drawing.Color.Red;
@@ -124,19 +137,6 @@
             this.btn_delete_room.Text = "&Delete";
             this.btn_delete_room.UseVisualStyleBackColor = false;
             this.btn_delete_room.Click += new System.EventHandler(this.btn_delete_room_Click);
-            // 
-            // Btn_Edit_Room
-            // 
-            this.Btn_Edit_Room.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Btn_Edit_Room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Edit_Room.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Edit_Room.Location = new System.Drawing.Point(105, 525);
-            this.Btn_Edit_Room.Name = "Btn_Edit_Room";
-            this.Btn_Edit_Room.Size = new System.Drawing.Size(121, 35);
-            this.Btn_Edit_Room.TabIndex = 28;
-            this.Btn_Edit_Room.Text = "&Edit";
-            this.Btn_Edit_Room.UseVisualStyleBackColor = true;
-            this.Btn_Edit_Room.Click += new System.EventHandler(this.Btn_Edit_Room_Click);
             // 
             // ShowBookings
             // 

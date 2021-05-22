@@ -189,7 +189,7 @@
             this.btn_saveBookings.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btn_saveBookings.Size = new System.Drawing.Size(235, 30);
             this.btn_saveBookings.TabIndex = 6;
-            this.btn_saveBookings.Text = "Salveaza rezervari";
+            this.btn_saveBookings.Text = "Sterge rezervari";
             this.btn_saveBookings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_saveBookings.UseVisualStyleBackColor = false;
             this.btn_saveBookings.Click += new System.EventHandler(this.btn_saveBookings_Click);

@@ -244,24 +244,9 @@ namespace HotelManagement.views
 
         private void btn_saveBookings_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DialogResult dialogResult = MessageBox.Show("Salvare rezervari?", "Salveaza rezervari", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Serialize(bookings, bookingsPath);
-                    MessageBox.Show("Rezervari salvate in fisierul " + bookingsPath + "!");
-                }
-                if (activeForm != null)
-                {
-                    activeForm.Dispose();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            DeleteBookings form = new DeleteBookings(bookings, users, bookingsPath);
+            form.SaveObjects += Serialize;
+            form.ShowDialog();
         }
 
         private void cameraToolStripMenuItem_Click(object sender, EventArgs e)
