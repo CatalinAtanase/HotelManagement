@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,12 +23,15 @@ namespace HotelManagement.views.UsersController
 
         public event CallBack SaveUsers;
 
+        string connStr;
+
         public AddUser(List<User> users, string savePath)
         {
             InitializeComponent();
             this.users = users;
             this.savePath = savePath;
             this.emails.Add(this.tb_email);
+            connStr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = DB.accdb";
         }
 
         private void Btn_Add_User_Click(object sender, EventArgs e)
@@ -101,9 +106,39 @@ namespace HotelManagement.views.UsersController
                     newUser.Emails = new string[emailValues.Length];
                     emailValues.CopyTo(newUser.Emails, 0);
 
-                    users.Add(newUser);
-                    SaveUsers?.Invoke(users, savePath);
 
+                    OleDbConnection conexiune = new OleDbConnection(connStr);
+                    try
+                    {
+                        conexiune.Open();
+                        OleDbCommand command = new OleDbCommand();
+                        command.Connection = conexiune;
+                        String query = "INSERT INTO users VALUES (@cnp, @Prenume, @Nume, @Telefon, @Emails)";
+
+                        command.CommandText = query;
+                        command.Parameters.AddWithValue("@cnp", newUser.Cnp.ToString());
+                        command.Parameters.AddWithValue("@Prenume", newUser.FirstName);
+                        command.Parameters.AddWithValue("@Nume", newUser.LastName);
+                        command.Parameters.AddWithValue("@Telefon", newUser.Phone);
+                        command.Parameters.AddWithValue("@Emails", string.Join(", ", newUser.Emails));
+                        int result = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (result < 0)
+                            MessageBox.Show("Error inserting data into Database!");
+
+                        users.Add(newUser);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        conexiune.Close();
+                    }
+
+                    SaveUsers?.Invoke(users, savePath);
                     MessageBox.Show("Client adaugat cu succes!");
 
                 } catch(Exception ex)

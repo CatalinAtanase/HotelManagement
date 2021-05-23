@@ -44,13 +44,13 @@
             this.btn_show_camere = new System.Windows.Forms.Button();
             this.btn_add_camere = new System.Windows.Forms.Button();
             this.btn_camere_dropdown = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel_childForm = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adaugaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rezervareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel_subMenu_clienti_btns.SuspendLayout();
             this.panel_subMenu_rezervari_btns.SuspendLayout();
@@ -340,6 +340,17 @@
             this.btn_camere_dropdown.UseVisualStyleBackColor = false;
             this.btn_camere_dropdown.Click += new System.EventHandler(this.btn_camere_dropdown_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel2.BackgroundImage = global::HotelManagement.Properties.Resources.hotel;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(235, 158);
+            this.panel2.TabIndex = 1;
+            // 
             // panel_childForm
             // 
             this.panel_childForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
@@ -392,17 +403,6 @@
             this.clientToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
             this.clientToolStripMenuItem.Text = "Client";
             this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panel2.BackgroundImage = global::HotelManagement.Properties.Resources.hotel;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(235, 158);
-            this.panel2.TabIndex = 1;
             // 
             // Dashboard
             // 

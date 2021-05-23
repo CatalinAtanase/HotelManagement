@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace HotelManagement.views.UsersController
         List<Booking> bookings;
         List<Room> rooms;
         string roomsPath;
+        string connStr;
 
         public event CallBack SaveObjects;
 
@@ -31,6 +33,9 @@ namespace HotelManagement.views.UsersController
             this.rooms = rooms;
             this.bookingsPath = bookingsPath;
             displayList();
+            //displayListFromDb();
+            connStr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = DB.accdb";
+
         }
 
         private void displayList()
@@ -49,17 +54,31 @@ namespace HotelManagement.views.UsersController
         {
             if (dgv_users.SelectedRows.Count == 1)
             {
-                DataGridViewRow selectedRow = dgv_users.SelectedRows[0];
-                User user= (User)selectedRow.Tag;
+                try
+                {
+                    using (var conn = new OleDbConnection(connStr))
+                    using (var myCommand = conn.CreateCommand())
+                    {
+                        var cnpParam = new OleDbParameter("@CNP", dgv_users.SelectedRows[0].Cells[3].Value.ToString());
+                        string query = "DELETE FROM users WHERE (CNP) = @CNP;";
+                        myCommand.CommandText = query;
+                        myCommand.Parameters.Add(cnpParam);
 
-                bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
-                SaveObjects?.Invoke(bookings, bookingsPath);
+                        conn.Open();
+                        myCommand.ExecuteNonQuery();
 
-                users.Remove(user);
-                SaveObjects?.Invoke(users, usersPath);
+                        User user = (User)dgv_users.SelectedRows[0].Tag;
+                        bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
+                        users.Remove(user);
 
-                MessageBox.Show("Client sters cu succes! Rezervarile acestuia au fost sterse!");
-                displayList();
+                        MessageBox.Show("Client sters cu succes! Rezervarile acestuia au fost sterse!");
+                        displayList();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -69,6 +88,7 @@ namespace HotelManagement.views.UsersController
             {
                 DataGridViewRow selectedRow = dgv_users.SelectedRows[0];
                 User user = (User)selectedRow.Tag;
+                MessageBox.Show(user.ToString());
                 EditUser editUser = new EditUser(users, user, usersPath, bookings, bookingsPath);
                 editUser.SaveObjects += SaveObjects;
                 editUser.ShowDialog();
@@ -103,16 +123,35 @@ namespace HotelManagement.views.UsersController
                     DataGridViewRow selectedRow = selectedCol.OwningRow;
                     User user = (User)selectedRow.Tag;
 
-                    bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
-                    SaveObjects?.Invoke(bookings, bookingsPath);
+                    try
+                    {
+                        using (var conn = new OleDbConnection(connStr))
+                        using (var myCommand = conn.CreateCommand())
+                        {
+                            var cnpParam = new OleDbParameter("@CNP", dgv_users.SelectedRows[0].Cells[3].Value.ToString());
+                            string query = "DELETE FROM users WHERE (CNP) = @CNP;";
+                            myCommand.CommandText = query;
+                            myCommand.Parameters.Add(cnpParam);
 
-                    users.Remove(user);
-                    SaveObjects?.Invoke(users, usersPath);
+                            conn.Open();
+                            myCommand.ExecuteNonQuery();
 
-                    MessageBox.Show("Client sters cu succes! Rezervarile acestuia au fost sterse!");
+                            bookings.RemoveAll((b) => b.UserCNP == user.Cnp);
+                            users.Remove(user);
+
+                            MessageBox.Show("Client sters cu succes! Rezervarile acestuia au fost sterse!");
+                            displayList();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
                     displayList();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Nu exista rezervari");
             }

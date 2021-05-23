@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,12 @@ namespace HotelManagement.views.UsersController
         string bookingsPath;
         List<Booking> bookings;
         ArrayList emails = new ArrayList();
+        string connStr;
 
 
         public event CallBack SaveObjects;
         public EditUser(List<User> users, User user, string usersPath, List<Booking> bookings, string bookingsPath)
         {
-            InitializeComponent();
             this.user = user;
             this.users = users;
             this.usersPath = usersPath;
@@ -34,6 +35,9 @@ namespace HotelManagement.views.UsersController
             this.emails.Add(this.tb_email);
             this.emails.Add(this.tb_email2);
             this.emails.Add(this.tb_email3);
+            connStr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = DB.accdb";
+            InitializeComponent();
+
         }
         private void Cancel_Button_Click(object sender, EventArgs e)
         {
@@ -97,6 +101,7 @@ namespace HotelManagement.views.UsersController
                     List<Booking> tempBookings;
                     tempBookings = bookings.FindAll((b) => b.UserCNP == user.Cnp);
 
+                    string oldCnp = user.Cnp;
                     user.FirstName = firstName;
                     user.LastName = lastName;
                     user.Phone = phone;
@@ -115,19 +120,45 @@ namespace HotelManagement.views.UsersController
                     user.Emails = new string[emailValues.Length];
                     emailValues.CopyTo(user.Emails, 0);
 
-                    SaveObjects?.Invoke(users, usersPath);
-
-                    foreach (Booking booking in bookings)
+                    try
                     {
-                        if (tempBookings.Contains(booking))
+                        using (var conn = new OleDbConnection(connStr))
+                        using (var myCommand = conn.CreateCommand())
                         {
-                            booking.UserCNP = user.Cnp;
+                            var oldCNP = new OleDbParameter("@oldCNP", oldCnp);
+                            var newCNP = new OleDbParameter("@CNP", user.Cnp);
+                            var nume = new OleDbParameter("@NUME", user.LastName);
+                            var prenume = new OleDbParameter("@PRENUME", user.FirstName);
+                            var telefon = new OleDbParameter("@TELEFON", user.Phone);
+                            var emails = new OleDbParameter("@EMAILS", string.Join(", ", user.Emails));
+                            string query = "Update users SET CNP = @CNP, PRENUME = @PRENUME, NUME = @NUME, TELEFON = @TELEFON, EMAILS = @EMAILS WHERE (CNP) = @oldCNP;";
+                            myCommand.CommandText = query;
+                            myCommand.Parameters.Add(newCNP);
+                            myCommand.Parameters.Add(prenume);
+                            myCommand.Parameters.Add(nume);
+                            myCommand.Parameters.Add(telefon);
+                            myCommand.Parameters.Add(emails);
+                            myCommand.Parameters.Add(oldCNP);
+
+                            conn.Open();
+                            myCommand.ExecuteNonQuery();
+
+                            foreach (Booking booking in bookings)
+                            {
+                                if (tempBookings.Contains(booking))
+                                {
+                                    booking.UserCNP = user.Cnp;
+                                }
+                            }
+                            MessageBox.Show("Datele clientului au fost editate cu succes! Toate rezervarile au fost reatribuite!");
+                            this.Dispose();
+
                         }
                     }
-                    SaveObjects?.Invoke(bookings, bookingsPath);
-
-                    MessageBox.Show("Datele clientului au fost editate cu succes! Toate rezervarile au fost reatribuite!");
-                    this.Dispose();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -144,11 +175,10 @@ namespace HotelManagement.views.UsersController
             this.tb_telefon.Text = user.Phone;
             this.tb_cnp.Text = user.Cnp;
             this.tb_email.Text = user[0];
-            for(int i = 1; i < user.NrEmails; i++)
+            for (int i = 1; i < user.NrEmails; i++)
             {
                 ((TextBox)emails[i]).Text = user[i];
             }
         }
-       
     }
 }

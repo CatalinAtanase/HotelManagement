@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgv_users = new System.Windows.Forms.DataGridView();
-            this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prenume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_delete_users = new System.Windows.Forms.Button();
             this.Btn_Edit_Room = new System.Windows.Forms.Button();
+            this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prenume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Emails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_users)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +51,7 @@
             this.dgv_users.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nume,
             this.Prenume,
-            this.Email,
+            this.Emails,
             this.CNP,
             this.Telefon});
             this.dgv_users.ContextMenuStrip = this.contextMenuStrip1;
@@ -61,41 +61,6 @@
             this.dgv_users.RowTemplate.Height = 24;
             this.dgv_users.Size = new System.Drawing.Size(907, 316);
             this.dgv_users.TabIndex = 0;
-            // 
-            // Nume
-            // 
-            this.Nume.HeaderText = "Nume";
-            this.Nume.MinimumWidth = 6;
-            this.Nume.Name = "Nume";
-            this.Nume.Width = 125;
-            // 
-            // Prenume
-            // 
-            this.Prenume.HeaderText = "Prenume";
-            this.Prenume.MinimumWidth = 6;
-            this.Prenume.Name = "Prenume";
-            this.Prenume.Width = 125;
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "Email";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            this.Email.Width = 125;
-            // 
-            // CNP
-            // 
-            this.CNP.HeaderText = "CNP";
-            this.CNP.MinimumWidth = 6;
-            this.CNP.Name = "CNP";
-            this.CNP.Width = 125;
-            // 
-            // Telefon
-            // 
-            this.Telefon.HeaderText = "Telefon";
-            this.Telefon.MinimumWidth = 6;
-            this.Telefon.Name = "Telefon";
-            this.Telefon.Width = 125;
             // 
             // contextMenuStrip1
             // 
@@ -147,6 +112,41 @@
             this.Btn_Edit_Room.UseVisualStyleBackColor = true;
             this.Btn_Edit_Room.Click += new System.EventHandler(this.Btn_Edit_Room_Click);
             // 
+            // Nume
+            // 
+            this.Nume.HeaderText = "Nume";
+            this.Nume.MinimumWidth = 6;
+            this.Nume.Name = "Nume";
+            this.Nume.Width = 125;
+            // 
+            // Prenume
+            // 
+            this.Prenume.HeaderText = "Prenume";
+            this.Prenume.MinimumWidth = 6;
+            this.Prenume.Name = "Prenume";
+            this.Prenume.Width = 125;
+            // 
+            // Emails
+            // 
+            this.Emails.HeaderText = "Emails";
+            this.Emails.MinimumWidth = 6;
+            this.Emails.Name = "Emails";
+            this.Emails.Width = 125;
+            // 
+            // CNP
+            // 
+            this.CNP.HeaderText = "CNP";
+            this.CNP.MinimumWidth = 6;
+            this.CNP.Name = "CNP";
+            this.CNP.Width = 125;
+            // 
+            // Telefon
+            // 
+            this.Telefon.HeaderText = "Telefon";
+            this.Telefon.MinimumWidth = 6;
+            this.Telefon.Name = "Telefon";
+            this.Telefon.Width = 125;
+            // 
             // ShowUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -167,15 +167,15 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_users;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nume;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Prenume;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CNP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
         private System.Windows.Forms.Button btn_delete_users;
         private System.Windows.Forms.Button Btn_Edit_Room;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editeazaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stergeToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nume;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prenume;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Emails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
     }
 }

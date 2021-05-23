@@ -3,14 +3,9 @@ using HotelManagement.views.RoomsController;
 using HotelManagement.views.UsersController;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Data.OleDb;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelManagement.views
@@ -25,33 +20,87 @@ namespace HotelManagement.views
         private const string roomsPath = "rooms.bin";
         private const string usersPath = "users.bin";
         private const string bookingsPath = "rezervari.bin";
+        string connString;
         public Dashboard()
         {
             InitializeComponent();
-       
+            connString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = DB.accdb";
+
+            OleDbConnection conexiune = new OleDbConnection(connString);
             try
             {
-                this.users = (List<User>)Deserialize(usersPath);
+                conexiune.Open();
+                OleDbCommand comanda = new OleDbCommand();
+                comanda.Connection = conexiune;
+                comanda.CommandText = "SELECT * FROM users";
+                OleDbDataReader reader = comanda.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    User user = new User(reader["Prenume"].ToString(), reader["Nume"].ToString(), reader["CNP"].ToString(), reader["Telefon"].ToString());
+                    user.Emails = reader["Emails"].ToString().Split(',');
+                    users.Add(user);
+                }
+                reader.Close();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                conexiune.Close();
+            }
+
+            conexiune = new OleDbConnection(connString);
             try
             {
-                this.rooms = (List<Room>)Deserialize(roomsPath);
+                conexiune.Open();
+                OleDbCommand comanda = new OleDbCommand();
+                comanda.Connection = conexiune;
+                comanda.CommandText = "SELECT * FROM rooms";
+                OleDbDataReader reader = comanda.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Room room = new Room(Int32.Parse(reader["ID"].ToString()), Int32.Parse(reader["Capacitate"].ToString()), Double.Parse(reader["Pret"].ToString()), Boolean.Parse(reader["Premium"].ToString()));
+                    rooms.Add(room);
+                }
+                reader.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                conexiune.Close();
+            }
+
+            conexiune = new OleDbConnection(connString);
             try
             {
-                this.bookings = (List<Booking>)Deserialize(bookingsPath);
+                conexiune.Open();
+                OleDbCommand comanda = new OleDbCommand();
+                comanda.Connection = conexiune;
+                comanda.CommandText = "SELECT * FROM bookings";
+                OleDbDataReader reader = comanda.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Booking booking = new Booking(reader["userCNP"].ToString(), Int32.Parse(reader["roomId"].ToString()), DateTime.Parse(reader["startDate"].ToString()), DateTime.Parse(reader["endDate"].ToString()));
+                    bookings.Add(booking);
+                }
+                reader.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexiune.Close();
             }
         }
 
@@ -150,24 +199,6 @@ namespace HotelManagement.views
             form.SaveObjects += Serialize;
             openChildForm(form);
         }
-
-        //public static bool Serialize(object value, string path)
-        //{
-        //    try
-        //    {
-        //        BinaryFormatter formatter = new BinaryFormatter();
-
-        //        using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
-        //        {
-        //            formatter.Serialize(fStream, value);
-        //        }
-        //        return true;
-        //    } catch (Exception ex)
-        //    {
-        //        return false;
-        //    }
-            
-        //}
 
         public static void Serialize(object value, string path)
         {
