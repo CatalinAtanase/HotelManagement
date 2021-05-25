@@ -46,27 +46,15 @@ namespace HotelManagement.views.BookingsController
             }
         }
 
-        private void button1_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.Text))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
-        }
 
-        private void dgv_bookings_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dgv_bookings_MouseDown(object sender, MouseEventArgs e)
         {
             Booking booking = (Booking)dgv_bookings.CurrentRow.Tag;
-            dgv_bookings.DoDragDrop(booking, DragDropEffects.Move | DragDropEffects.Copy);
+            if (booking != null)
+            {
+                dgv_bookings.DoDragDrop(booking, DragDropEffects.Move | DragDropEffects.Copy);
+            }
         }
 
         private void label1_DragEnter(object sender, DragEventArgs e)
@@ -85,6 +73,11 @@ namespace HotelManagement.views.BookingsController
             bookings.Remove(b);
             SaveObjects?.Invoke(bookings, bookingsPath);
             displayList();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

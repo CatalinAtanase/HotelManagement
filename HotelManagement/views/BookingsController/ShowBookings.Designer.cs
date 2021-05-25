@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowBookings));
             this.dgv_bookings = new System.Windows.Forms.DataGridView();
             this.Client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +40,9 @@
             this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Btn_Edit_Room = new System.Windows.Forms.Button();
             this.btn_delete_room = new System.Windows.Forms.Button();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_bookings)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -138,12 +142,40 @@
             this.btn_delete_room.UseVisualStyleBackColor = false;
             this.btn_delete_room.Click += new System.EventHandler(this.btn_delete_room_Click);
             // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(782, 525);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 35);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Printeaza";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ShowBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(1050, 642);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_delete_room);
             this.Controls.Add(this.Btn_Edit_Room);
             this.Controls.Add(this.dgv_bookings);
@@ -168,5 +200,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editeazaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stergeToolStripMenuItem;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button button1;
     }
 }

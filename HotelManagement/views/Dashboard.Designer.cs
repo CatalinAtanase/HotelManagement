@@ -51,6 +51,7 @@
             this.cameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rezervareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimeUC1 = new HotelManagement.DateTimeUC();
             this.panel1.SuspendLayout();
             this.panel_subMenu_clienti_btns.SuspendLayout();
             this.panel_subMenu_rezervari_btns.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dateTimeUC1);
             this.panel1.Controls.Add(this.panel_subMenu_clienti_btns);
             this.panel1.Controls.Add(this.btn_user_dropdown);
             this.panel1.Controls.Add(this.panel_subMenu_rezervari_btns);
@@ -68,9 +70,9 @@
             this.panel1.Controls.Add(this.btn_camere_dropdown);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(235, 828);
+            this.panel1.Size = new System.Drawing.Size(235, 826);
             this.panel1.TabIndex = 0;
             // 
             // panel_subMenu_clienti_btns
@@ -355,10 +357,10 @@
             // 
             this.panel_childForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.panel_childForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_childForm.Location = new System.Drawing.Point(235, 28);
+            this.panel_childForm.Location = new System.Drawing.Point(235, 30);
             this.panel_childForm.Name = "panel_childForm";
             this.panel_childForm.Padding = new System.Windows.Forms.Padding(30);
-            this.panel_childForm.Size = new System.Drawing.Size(1050, 828);
+            this.panel_childForm.Size = new System.Drawing.Size(1050, 826);
             this.panel_childForm.TabIndex = 1;
             // 
             // menuStrip1
@@ -368,7 +370,7 @@
             this.adaugaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1285, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1285, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -379,7 +381,7 @@
             this.rezervareToolStripMenuItem,
             this.clientToolStripMenuItem});
             this.adaugaToolStripMenuItem.Name = "adaugaToolStripMenuItem";
-            this.adaugaToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.adaugaToolStripMenuItem.Size = new System.Drawing.Size(60, 26);
             this.adaugaToolStripMenuItem.Text = "Menu";
             this.adaugaToolStripMenuItem.Click += new System.EventHandler(this.adaugaToolStripMenuItem_Click);
             // 
@@ -403,6 +405,14 @@
             this.clientToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
             this.clientToolStripMenuItem.Text = "Client";
             this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
+            // 
+            // dateTimeUC1
+            // 
+            this.dateTimeUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dateTimeUC1.Location = new System.Drawing.Point(0, 650);
+            this.dateTimeUC1.Name = "dateTimeUC1";
+            this.dateTimeUC1.Size = new System.Drawing.Size(235, 42);
+            this.dateTimeUC1.TabIndex = 10;
             // 
             // Dashboard
             // 
@@ -452,5 +462,6 @@
         private System.Windows.Forms.ToolStripMenuItem cameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rezervareToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem;
+        private DateTimeUC dateTimeUC1;
     }
 }

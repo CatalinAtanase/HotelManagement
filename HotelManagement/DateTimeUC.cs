@@ -10,22 +10,12 @@ using System.Windows.Forms;
 
 namespace HotelManagement
 {
-    public partial class DateTime_Now : UserControl
+    public partial class DateTimeUC : UserControl
     {
-        public DateTime_Now()
+        public DateTimeUC()
         {
             InitializeComponent();
             timer1.Start();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)

@@ -128,7 +128,7 @@ namespace HotelManagement.views.UsersController
                         using (var conn = new OleDbConnection(connStr))
                         using (var myCommand = conn.CreateCommand())
                         {
-                            var cnpParam = new OleDbParameter("@CNP", dgv_users.SelectedRows[0].Cells[3].Value.ToString());
+                            var cnpParam = new OleDbParameter("@CNP", selectedRow.Cells[3].Value.ToString());
                             string query = "DELETE FROM users WHERE (CNP) = @CNP;";
                             myCommand.CommandText = query;
                             myCommand.Parameters.Add(cnpParam);

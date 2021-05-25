@@ -27,6 +27,7 @@ namespace HotelManagement.views.UsersController
         public event CallBack SaveObjects;
         public EditUser(List<User> users, User user, string usersPath, List<Booking> bookings, string bookingsPath)
         {
+            InitializeComponent();
             this.user = user;
             this.users = users;
             this.usersPath = usersPath;
@@ -36,8 +37,6 @@ namespace HotelManagement.views.UsersController
             this.emails.Add(this.tb_email2);
             this.emails.Add(this.tb_email3);
             connStr = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = DB.accdb";
-            InitializeComponent();
-
         }
         private void Cancel_Button_Click(object sender, EventArgs e)
         {
@@ -109,14 +108,13 @@ namespace HotelManagement.views.UsersController
 
                     for (int i = 0; i < emailValues.Length; i++)
                     {
-                        if (emailValues.Contains(((TextBox)emails[i]).Text) && !string.IsNullOrEmpty(((TextBox)emails[i]).Text) && !regex.Match(((TextBox)emails[i]).Text).Success)
+                        if (user.Emails.Contains(((TextBox)emails[i]).Text) && !string.IsNullOrEmpty(((TextBox)emails[i]).Text) && !regex.Match(((TextBox)emails[i]).Text).Success)
                         {
                             MessageBox.Show("Adresa de mail deja exista!");
                             return;
                         }
-                        emailValues[i] = ((TextBox)emails[i]).Text;
                     }
-
+                  
                     user.Emails = new string[emailValues.Length];
                     emailValues.CopyTo(user.Emails, 0);
 

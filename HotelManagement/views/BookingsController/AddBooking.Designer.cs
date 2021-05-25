@@ -44,6 +44,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimeUC1 = new HotelManagement.DateTimeUC();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -193,6 +194,13 @@
             this.menuToolStripMenuItem.Text = "Sterge campuri";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
+            // dateTimeUC1
+            // 
+            this.dateTimeUC1.Location = new System.Drawing.Point(606, 44);
+            this.dateTimeUC1.Name = "dateTimeUC1";
+            this.dateTimeUC1.Size = new System.Drawing.Size(224, 42);
+            this.dateTimeUC1.TabIndex = 57;
+            // 
             // AddBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -200,6 +208,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(878, 595);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.dateTimeUC1);
             this.Controls.Add(this.select_camera);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -240,5 +249,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private DateTimeUC dateTimeUC1;
     }
 }

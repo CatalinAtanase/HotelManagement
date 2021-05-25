@@ -30,16 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgv_users = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editeazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_delete_users = new System.Windows.Forms.Button();
-            this.Btn_Edit_Room = new System.Windows.Forms.Button();
             this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prenume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Emails = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_delete_users = new System.Windows.Forms.Button();
+            this.Btn_Edit_Room = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_users)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -61,56 +60,6 @@
             this.dgv_users.RowTemplate.Height = 24;
             this.dgv_users.Size = new System.Drawing.Size(907, 316);
             this.dgv_users.TabIndex = 0;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editeazaToolStripMenuItem,
-            this.stergeToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(136, 52);
-            // 
-            // editeazaToolStripMenuItem
-            // 
-            this.editeazaToolStripMenuItem.Name = "editeazaToolStripMenuItem";
-            this.editeazaToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
-            this.editeazaToolStripMenuItem.Text = "Editeaza";
-            this.editeazaToolStripMenuItem.Click += new System.EventHandler(this.editeazaToolStripMenuItem_Click);
-            // 
-            // stergeToolStripMenuItem
-            // 
-            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
-            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
-            this.stergeToolStripMenuItem.Text = "Sterge";
-            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
-            // 
-            // btn_delete_users
-            // 
-            this.btn_delete_users.BackColor = System.Drawing.Color.Red;
-            this.btn_delete_users.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_delete_users.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_users.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete_users.Location = new System.Drawing.Point(220, 402);
-            this.btn_delete_users.Name = "btn_delete_users";
-            this.btn_delete_users.Size = new System.Drawing.Size(121, 35);
-            this.btn_delete_users.TabIndex = 29;
-            this.btn_delete_users.Text = "&Delete";
-            this.btn_delete_users.UseVisualStyleBackColor = false;
-            this.btn_delete_users.Click += new System.EventHandler(this.btn_delete_user_Click);
-            // 
-            // Btn_Edit_Room
-            // 
-            this.Btn_Edit_Room.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Btn_Edit_Room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Edit_Room.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Edit_Room.Location = new System.Drawing.Point(63, 402);
-            this.Btn_Edit_Room.Name = "Btn_Edit_Room";
-            this.Btn_Edit_Room.Size = new System.Drawing.Size(121, 35);
-            this.Btn_Edit_Room.TabIndex = 28;
-            this.Btn_Edit_Room.Text = "&Edit";
-            this.Btn_Edit_Room.UseVisualStyleBackColor = true;
-            this.Btn_Edit_Room.Click += new System.EventHandler(this.Btn_Edit_Room_Click);
             // 
             // Nume
             // 
@@ -147,6 +96,49 @@
             this.Telefon.Name = "Telefon";
             this.Telefon.Width = 125;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stergeToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(122, 28);
+            // 
+            // stergeToolStripMenuItem
+            // 
+            this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
+            this.stergeToolStripMenuItem.Text = "Sterge";
+            this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
+            // 
+            // btn_delete_users
+            // 
+            this.btn_delete_users.BackColor = System.Drawing.Color.Red;
+            this.btn_delete_users.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_delete_users.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_users.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete_users.Location = new System.Drawing.Point(220, 402);
+            this.btn_delete_users.Name = "btn_delete_users";
+            this.btn_delete_users.Size = new System.Drawing.Size(121, 35);
+            this.btn_delete_users.TabIndex = 29;
+            this.btn_delete_users.Text = "&Delete";
+            this.btn_delete_users.UseVisualStyleBackColor = false;
+            this.btn_delete_users.Click += new System.EventHandler(this.btn_delete_user_Click);
+            // 
+            // Btn_Edit_Room
+            // 
+            this.Btn_Edit_Room.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Btn_Edit_Room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Edit_Room.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Edit_Room.Location = new System.Drawing.Point(63, 402);
+            this.Btn_Edit_Room.Name = "Btn_Edit_Room";
+            this.Btn_Edit_Room.Size = new System.Drawing.Size(121, 35);
+            this.Btn_Edit_Room.TabIndex = 28;
+            this.Btn_Edit_Room.Text = "&Edit";
+            this.Btn_Edit_Room.UseVisualStyleBackColor = true;
+            this.Btn_Edit_Room.Visible = false;
+            this.Btn_Edit_Room.Click += new System.EventHandler(this.Btn_Edit_Room_Click);
+            // 
             // ShowUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -170,7 +162,6 @@
         private System.Windows.Forms.Button btn_delete_users;
         private System.Windows.Forms.Button Btn_Edit_Room;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem editeazaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stergeToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nume;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prenume;

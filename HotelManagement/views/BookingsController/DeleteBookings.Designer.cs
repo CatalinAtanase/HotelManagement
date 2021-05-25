@@ -53,7 +53,6 @@
             this.dgv_bookings.RowTemplate.Height = 24;
             this.dgv_bookings.Size = new System.Drawing.Size(798, 223);
             this.dgv_bookings.TabIndex = 2;
-            this.dgv_bookings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_bookings_CellContentClick);
             this.dgv_bookings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgv_bookings_MouseDown);
             // 
             // Client
@@ -95,6 +94,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 100);
             this.label1.TabIndex = 6;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             this.label1.DragDrop += new System.Windows.Forms.DragEventHandler(this.label1_DragDrop);
             this.label1.DragEnter += new System.Windows.Forms.DragEventHandler(this.label1_DragEnter);
             // 

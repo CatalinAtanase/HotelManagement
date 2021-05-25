@@ -23,7 +23,7 @@ D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\bin\Debug\H
 D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\bin\Debug\HotelManagement.exe
 D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\bin\Debug\HotelManagement.pdb
 D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\obj\Debug\HotelManagement.csprojAssemblyReference.cache
-D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\obj\Debug\HotelManagement.DateTime_Now.resources
+D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\obj\Debug\HotelManagement.DateTimeUC.resources
 D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\obj\Debug\HotelManagement.Properties.Resources.resources
 D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\obj\Debug\HotelManagement.views.BookingsController.AddBooking.resources
 D:\Faculta\An_2\S2\PAW\PROIECT_FINAL\HotelManagement\HotelManagement\obj\Debug\HotelManagement.views.BookingsController.DeleteBookings.resources

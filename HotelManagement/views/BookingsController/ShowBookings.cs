@@ -105,5 +105,20 @@ namespace HotelManagement.views.BookingsController
                 displayList();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap objBmp = new Bitmap(this.dgv_bookings.Width, this.dgv_bookings.Height);
+            dgv_bookings.DrawToBitmap(objBmp, new Rectangle(0, 0, this.dgv_bookings.Width, this.dgv_bookings.Height));
+            objBmp.SetResolution(93, 80);
+            e.Graphics.DrawImage(objBmp, 70, 150);
+            e.Graphics.DrawString("Lista rezervari", new Font("Century Gothic", 32, FontStyle.Bold), Brushes.Black, new Point(160, 60));
+        }
     }
 }
