@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimeUC1 = new HotelManagement.DateTimeUC();
             this.panel_subMenu_clienti_btns = new System.Windows.Forms.Panel();
-            this.btn_saveUsers = new System.Windows.Forms.Button();
             this.btn_show_clients = new System.Windows.Forms.Button();
             this.btn_add_client = new System.Windows.Forms.Button();
             this.btn_user_dropdown = new System.Windows.Forms.Button();
@@ -51,7 +51,6 @@
             this.cameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rezervareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateTimeUC1 = new HotelManagement.DateTimeUC();
             this.panel1.SuspendLayout();
             this.panel_subMenu_clienti_btns.SuspendLayout();
             this.panel_subMenu_rezervari_btns.SuspendLayout();
@@ -70,42 +69,30 @@
             this.panel1.Controls.Add(this.btn_camere_dropdown);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(235, 826);
+            this.panel1.Size = new System.Drawing.Size(235, 828);
             this.panel1.TabIndex = 0;
+            // 
+            // dateTimeUC1
+            // 
+            this.dateTimeUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dateTimeUC1.Location = new System.Drawing.Point(0, 561);
+            this.dateTimeUC1.Name = "dateTimeUC1";
+            this.dateTimeUC1.Size = new System.Drawing.Size(235, 42);
+            this.dateTimeUC1.TabIndex = 10;
             // 
             // panel_subMenu_clienti_btns
             // 
             this.panel_subMenu_clienti_btns.BackColor = System.Drawing.Color.Lime;
-            this.panel_subMenu_clienti_btns.Controls.Add(this.btn_saveUsers);
             this.panel_subMenu_clienti_btns.Controls.Add(this.btn_show_clients);
             this.panel_subMenu_clienti_btns.Controls.Add(this.btn_add_client);
             this.panel_subMenu_clienti_btns.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_subMenu_clienti_btns.Location = new System.Drawing.Point(0, 541);
+            this.panel_subMenu_clienti_btns.Location = new System.Drawing.Point(0, 504);
             this.panel_subMenu_clienti_btns.Name = "panel_subMenu_clienti_btns";
-            this.panel_subMenu_clienti_btns.Size = new System.Drawing.Size(235, 109);
+            this.panel_subMenu_clienti_btns.Size = new System.Drawing.Size(235, 57);
             this.panel_subMenu_clienti_btns.TabIndex = 8;
             this.panel_subMenu_clienti_btns.Visible = false;
-            // 
-            // btn_saveUsers
-            // 
-            this.btn_saveUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btn_saveUsers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_saveUsers.FlatAppearance.BorderSize = 0;
-            this.btn_saveUsers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.btn_saveUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_saveUsers.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_saveUsers.ForeColor = System.Drawing.Color.Black;
-            this.btn_saveUsers.Location = new System.Drawing.Point(0, 60);
-            this.btn_saveUsers.Name = "btn_saveUsers";
-            this.btn_saveUsers.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_saveUsers.Size = new System.Drawing.Size(235, 30);
-            this.btn_saveUsers.TabIndex = 6;
-            this.btn_saveUsers.Text = "Salveaza clienti";
-            this.btn_saveUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_saveUsers.UseVisualStyleBackColor = false;
-            this.btn_saveUsers.Click += new System.EventHandler(this.btn_saveUsers_Click);
             // 
             // btn_show_clients
             // 
@@ -154,7 +141,7 @@
             this.btn_user_dropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_user_dropdown.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_user_dropdown.ForeColor = System.Drawing.Color.Black;
-            this.btn_user_dropdown.Location = new System.Drawing.Point(0, 483);
+            this.btn_user_dropdown.Location = new System.Drawing.Point(0, 446);
             this.btn_user_dropdown.Name = "btn_user_dropdown";
             this.btn_user_dropdown.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_user_dropdown.Size = new System.Drawing.Size(235, 58);
@@ -171,9 +158,9 @@
             this.panel_subMenu_rezervari_btns.Controls.Add(this.btn_show_bookings);
             this.panel_subMenu_rezervari_btns.Controls.Add(this.btn_add_booking);
             this.panel_subMenu_rezervari_btns.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_subMenu_rezervari_btns.Location = new System.Drawing.Point(0, 374);
+            this.panel_subMenu_rezervari_btns.Location = new System.Drawing.Point(0, 362);
             this.panel_subMenu_rezervari_btns.Name = "panel_subMenu_rezervari_btns";
-            this.panel_subMenu_rezervari_btns.Size = new System.Drawing.Size(235, 109);
+            this.panel_subMenu_rezervari_btns.Size = new System.Drawing.Size(235, 84);
             this.panel_subMenu_rezervari_btns.TabIndex = 6;
             this.panel_subMenu_rezervari_btns.Visible = false;
             // 
@@ -243,7 +230,7 @@
             this.btn_bookings_dropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_bookings_dropdown.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_bookings_dropdown.ForeColor = System.Drawing.Color.Black;
-            this.btn_bookings_dropdown.Location = new System.Drawing.Point(0, 316);
+            this.btn_bookings_dropdown.Location = new System.Drawing.Point(0, 304);
             this.btn_bookings_dropdown.Name = "btn_bookings_dropdown";
             this.btn_bookings_dropdown.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_bookings_dropdown.Size = new System.Drawing.Size(235, 58);
@@ -262,7 +249,7 @@
             this.panel_subMenu_camere_btns.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_subMenu_camere_btns.Location = new System.Drawing.Point(0, 216);
             this.panel_subMenu_camere_btns.Name = "panel_subMenu_camere_btns";
-            this.panel_subMenu_camere_btns.Size = new System.Drawing.Size(235, 100);
+            this.panel_subMenu_camere_btns.Size = new System.Drawing.Size(235, 88);
             this.panel_subMenu_camere_btns.TabIndex = 4;
             this.panel_subMenu_camere_btns.Visible = false;
             // 
@@ -357,10 +344,10 @@
             // 
             this.panel_childForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.panel_childForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_childForm.Location = new System.Drawing.Point(235, 30);
+            this.panel_childForm.Location = new System.Drawing.Point(235, 28);
             this.panel_childForm.Name = "panel_childForm";
             this.panel_childForm.Padding = new System.Windows.Forms.Padding(30);
-            this.panel_childForm.Size = new System.Drawing.Size(1050, 826);
+            this.panel_childForm.Size = new System.Drawing.Size(1050, 828);
             this.panel_childForm.TabIndex = 1;
             // 
             // menuStrip1
@@ -370,7 +357,7 @@
             this.adaugaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1285, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1285, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -381,7 +368,7 @@
             this.rezervareToolStripMenuItem,
             this.clientToolStripMenuItem});
             this.adaugaToolStripMenuItem.Name = "adaugaToolStripMenuItem";
-            this.adaugaToolStripMenuItem.Size = new System.Drawing.Size(60, 26);
+            this.adaugaToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.adaugaToolStripMenuItem.Text = "Menu";
             this.adaugaToolStripMenuItem.Click += new System.EventHandler(this.adaugaToolStripMenuItem_Click);
             // 
@@ -405,14 +392,6 @@
             this.clientToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
             this.clientToolStripMenuItem.Text = "Client";
             this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
-            // 
-            // dateTimeUC1
-            // 
-            this.dateTimeUC1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dateTimeUC1.Location = new System.Drawing.Point(0, 650);
-            this.dateTimeUC1.Name = "dateTimeUC1";
-            this.dateTimeUC1.Size = new System.Drawing.Size(235, 42);
-            this.dateTimeUC1.TabIndex = 10;
             // 
             // Dashboard
             // 
@@ -442,7 +421,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel_subMenu_clienti_btns;
-        private System.Windows.Forms.Button btn_saveUsers;
         private System.Windows.Forms.Button btn_show_clients;
         private System.Windows.Forms.Button btn_add_client;
         private System.Windows.Forms.Button btn_user_dropdown;

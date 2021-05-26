@@ -34,7 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.Select_user = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.select_checkIn = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -105,19 +104,6 @@
             this.Select_user.Name = "Select_user";
             this.Select_user.Size = new System.Drawing.Size(261, 33);
             this.Select_user.TabIndex = 49;
-            // 
-            // button1
-            // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(594, 159);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 33);
-            this.button1.TabIndex = 50;
-            this.button1.Text = "Adauga Client";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // select_checkIn
             // 
@@ -215,7 +201,6 @@
             this.Controls.Add(this.select_checkOut);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.select_checkIn);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Select_user);
             this.Controls.Add(this.label);
             this.Controls.Add(this.Cancel_Button);
@@ -239,7 +224,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.ComboBox Select_user;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker select_checkIn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
